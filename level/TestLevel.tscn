@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://cr4k3ghkvknun"]
+
+[ext_resource type="TileSet" uid="uid://b4j73oa34pfkb" path="res://GameExpo Files/Assets/Tilemaps/tileSet2.tres" id="1_cg5et"]
+
+[node name="Node2D" type="Node2D" unique_id=865304686]
+
+[node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=747993385]
+tile_set = ExtResource("1_cg5et")
