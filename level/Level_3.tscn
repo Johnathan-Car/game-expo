@@ -1,11 +1,11 @@
 [gd_scene format=4 uid="uid://d2bt28wp66hh0"]
 
 [ext_resource type="TileSet" uid="uid://b4j73oa34pfkb" path="res://GameExpo Files/Assets/Tilemaps/tileSet2.tres" id="1_4lcfb"]
-[ext_resource type="Texture2D" uid="uid://bqlrpait7wryh" path="res://level/IMG_0566.png" id="2_sassa"]
-[ext_resource type="Texture2D" uid="uid://cusccarbdgssw" path="res://level/IMG_0567.png" id="3_k11mu"]
+[ext_resource type="Texture2D" uid="uid://co6g683vbg70h" path="res://GameExpo Files/Assets/Player/PlayerPNG.png" id="2_sassa"]
+[ext_resource type="Texture2D" uid="uid://bnacbl31kfr1c" path="res://GameExpo Files/Assets/Walker/WalkerPNG.png" id="3_k11mu"]
 [ext_resource type="Texture2D" uid="uid://b4smn3wrso3h3" path="res://GameExpo Files/Assets/Platforms/Platform.png" id="4_hrlyt"]
 [ext_resource type="Texture2D" uid="uid://c3p7imgk2l5bh" path="res://GameExpo Files/Assets/Tilemaps/tile2/Traps/laser_activate.png" id="5_dut5s"]
-[ext_resource type="Texture2D" uid="uid://ddyghyyd8q6ap" path="res://GameExpo Files/Assets/Items/Star.png" id="8_vb3ao"]
+[ext_resource type="Texture2D" uid="uid://dka58spgy04tj" path="res://GameExpo Files/Assets/Items/star.png" id="8_vb3ao"]
 [ext_resource type="Texture2D" uid="uid://duuts17wa408" path="res://GameExpo Files/Assets/Items/key_card.png" id="9_36sxm"]
 [ext_resource type="Texture2D" uid="uid://chogcwlaqf06o" path="res://GameExpo Files/Assets/Tilemaps/tile2/Decor/Individual_PNGs/Door.png" id="10_hriet"]
 [ext_resource type="Texture2D" uid="uid://dkmpa8bb56p7m" path="res://GameExpo Files/Assets/Tilemaps/tile2/Traps/Individual_PNGs/laser_spikes_activate/tile007.png" id="11_4lcfb"]
@@ -134,31 +134,31 @@ scale = Vector2(0.92241323, 0.89516115)
 texture = ExtResource("2_sassa")
 flip_h = true
 
-[node name="Walker" type="Sprite2D" parent="." unique_id=1008324101]
+[node name="Gunner" type="Sprite2D" parent="." unique_id=1008324101]
 texture_filter = 6
 position = Vector2(1739, 566)
 scale = Vector2(1.5, 1.5)
 texture = ExtResource("3_k11mu")
 
-[node name="Walker2" type="Sprite2D" parent="." unique_id=46190307]
+[node name="Gunner2" type="Sprite2D" parent="." unique_id=46190307]
 texture_filter = 6
 position = Vector2(375, 566)
 scale = Vector2(1.5, 1.5)
 texture = ExtResource("3_k11mu")
 
-[node name="Walker3" type="Sprite2D" parent="." unique_id=713629164]
+[node name="Gunner3" type="Sprite2D" parent="." unique_id=713629164]
 texture_filter = 6
 position = Vector2(846, 56)
 scale = Vector2(1.5, 1.5)
 texture = ExtResource("3_k11mu")
 
-[node name="Walker4" type="Sprite2D" parent="." unique_id=139928990]
+[node name="Gunner4" type="Sprite2D" parent="." unique_id=139928990]
 texture_filter = 6
 position = Vector2(846, -73)
 scale = Vector2(1.5, 1.5)
 texture = ExtResource("3_k11mu")
 
-[node name="Walker5" type="Sprite2D" parent="." unique_id=1457789185]
+[node name="Gunner5" type="Sprite2D" parent="." unique_id=1457789185]
 texture_filter = 6
 position = Vector2(846, -203)
 scale = Vector2(1.5, 1.5)
@@ -251,7 +251,6 @@ texture = ExtResource("4_hrlyt")
 
 [node name="Star" type="Sprite2D" parent="." unique_id=400589531]
 position = Vector2(197.00012, -19.99997)
-scale = Vector2(0.03, 0.03)
 texture = ExtResource("8_vb3ao")
 
 [node name="KeyCard" type="Sprite2D" parent="." unique_id=1711891718]

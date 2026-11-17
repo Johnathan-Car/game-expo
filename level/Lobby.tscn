@@ -1,7 +1,7 @@
 [gd_scene format=4 uid="uid://baqsgk6cuoope"]
 
 [ext_resource type="TileSet" uid="uid://b4j73oa34pfkb" path="res://GameExpo Files/Assets/Tilemaps/tileSet2.tres" id="1_vqojd"]
-[ext_resource type="Texture2D" uid="uid://bqlrpait7wryh" path="res://level/IMG_0566.png" id="2_shymb"]
+[ext_resource type="Texture2D" uid="uid://co6g683vbg70h" path="res://GameExpo Files/Assets/Player/PlayerPNG.png" id="2_shymb"]
 [ext_resource type="Texture2D" uid="uid://cealfmqbn2xu0" path="res://GameExpo Files/Assets/Tilemaps/tile2/Decor/Individual_PNGs/RedLEDLight.png" id="6_j7nid"]
 [ext_resource type="Texture2D" uid="uid://fndao87kbkle" path="res://GameExpo Files/Assets/Tilemaps/tile2/Decor/Individual_PNGs/Door2.png" id="7_d8li5"]
 [ext_resource type="Texture2D" uid="uid://chogcwlaqf06o" path="res://GameExpo Files/Assets/Tilemaps/tile2/Decor/Individual_PNGs/Door.png" id="8_g1mom"]

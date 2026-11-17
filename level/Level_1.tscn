@@ -1,11 +1,11 @@
 [gd_scene format=4 uid="uid://br8u16jo7ro58"]
 
 [ext_resource type="TileSet" uid="uid://b4j73oa34pfkb" path="res://GameExpo Files/Assets/Tilemaps/tileSet2.tres" id="1_3rcq4"]
-[ext_resource type="Texture2D" uid="uid://bqlrpait7wryh" path="res://level/IMG_0566.png" id="2_ecyt4"]
-[ext_resource type="Texture2D" uid="uid://cusccarbdgssw" path="res://level/IMG_0567.png" id="3_3e3x0"]
+[ext_resource type="Texture2D" uid="uid://co6g683vbg70h" path="res://GameExpo Files/Assets/Player/PlayerPNG.png" id="2_ecyt4"]
+[ext_resource type="Texture2D" uid="uid://bnacbl31kfr1c" path="res://GameExpo Files/Assets/Walker/WalkerPNG.png" id="3_3e3x0"]
 [ext_resource type="Texture2D" uid="uid://b4smn3wrso3h3" path="res://GameExpo Files/Assets/Platforms/Platform.png" id="4_0ivd0"]
 [ext_resource type="Texture2D" uid="uid://dibsuwicrdvy8" path="res://GameExpo Files/Assets/Platforms/Platform_Moving.png" id="7_u3v7k"]
-[ext_resource type="Texture2D" uid="uid://ddyghyyd8q6ap" path="res://GameExpo Files/Assets/Items/Star.png" id="8_ophcd"]
+[ext_resource type="Texture2D" uid="uid://dka58spgy04tj" path="res://GameExpo Files/Assets/Items/star.png" id="8_ophcd"]
 [ext_resource type="Texture2D" uid="uid://duuts17wa408" path="res://GameExpo Files/Assets/Items/key_card.png" id="9_gcyl3"]
 [ext_resource type="Texture2D" uid="uid://chmjovmbtasyo" path="res://GameExpo Files/Assets/Tilemaps/tile2/Traps/Individual_PNGs/laser_spikes_idle/tile000.png" id="10_3e3x0"]
 [ext_resource type="Texture2D" uid="uid://chogcwlaqf06o" path="res://GameExpo Files/Assets/Tilemaps/tile2/Decor/Individual_PNGs/Door.png" id="10_ecyt4"]
@@ -70,7 +70,6 @@ texture = ExtResource("7_u3v7k")
 
 [node name="Star" type="Sprite2D" parent="." unique_id=400589531]
 position = Vector2(783.0001, 260)
-scale = Vector2(0.03, 0.03)
 texture = ExtResource("8_ophcd")
 
 [node name="KeyCard" type="Sprite2D" parent="." unique_id=1711891718]
