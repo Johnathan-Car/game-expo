@@ -288,7 +288,7 @@ scale = Vector2(4, 4)
 sprite_frames = SubResource("SpriteFrames_4v6l2")
 animation = &"default_2"
 
-[node name="LaserTrap3" type="AnimatedSprite2D" parent="." unique_id=2000916195]
+[node name="Flyer" type="AnimatedSprite2D" parent="." unique_id=2000916195]
 position = Vector2(1088, 326)
 scale = Vector2(1.2, 1.2)
 sprite_frames = SubResource("SpriteFrames_jtd5m")
