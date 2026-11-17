@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cusccarbdgssw"
-path="res://.godot/imported/IMG_0567.png-3f3212f18d5f1f6572eca5d5aaf537c3.ctex"
+uid="uid://ds6kmyj4iyxt6"
+path="res://.godot/imported/weapon spritesheet.png-4f0d4305c4016463fad65a623223be56.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://level/IMG_0567.png"
-dest_files=["res://.godot/imported/IMG_0567.png-3f3212f18d5f1f6572eca5d5aaf537c3.ctex"]
+source_file="res://GameExpo Files/Assets/Walker/weapon spritesheet.png"
+dest_files=["res://.godot/imported/weapon spritesheet.png-4f0d4305c4016463fad65a623223be56.ctex"]
 
 [params]
 

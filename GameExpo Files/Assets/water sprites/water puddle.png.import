@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bqlrpait7wryh"
-path="res://.godot/imported/IMG_0566.png-7b7131a1a49f87031036207d02f361d0.ctex"
+uid="uid://bj13rcwyn1bpp"
+path="res://.godot/imported/water puddle.png-4bd5838c4d6f33fc0d7fc62fe40e18f9.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://level/IMG_0566.png"
-dest_files=["res://.godot/imported/IMG_0566.png-7b7131a1a49f87031036207d02f361d0.ctex"]
+source_file="res://GameExpo Files/Assets/water sprites/water puddle.png"
+dest_files=["res://.godot/imported/water puddle.png-4bd5838c4d6f33fc0d7fc62fe40e18f9.ctex"]
 
 [params]
 
