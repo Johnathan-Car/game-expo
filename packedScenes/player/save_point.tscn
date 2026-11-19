@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://c8xo2fs47jbhj"]
+
+[node name="SavePoint" type="Node2D" unique_id=1149098343]
+
+[node name="Polygon2D" type="Polygon2D" parent="." unique_id=225928659]
+position = Vector2(4.7683716e-07, -9.536743e-07)
+scale = Vector2(1.052, 1)
+color = Color(1, 0.1764706, 1, 1)
+polygon = PackedVector2Array(-2.4, -2.4, 0, -3, 2.4, -2.4, 3, 0, 2.4, 2.4, 0, 3, -2.4, 2.4, -3, 0)

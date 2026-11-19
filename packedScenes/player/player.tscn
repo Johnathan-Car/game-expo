@@ -2,6 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://db22kyexgv2je" path="res://GameExpo Files/Assets/Player/PlayerSpritesheet.png" id="1_ejud0"]
 [ext_resource type="Script" uid="uid://cxrckicqq4855" path="res://packedScenes/player/Player.cs" id="1_v0kym"]
+[ext_resource type="PackedScene" uid="uid://c8xo2fs47jbhj" path="res://packedScenes/player/save_point.tscn" id="2_sp377"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_v0kym"]
 atlas = ExtResource("1_ejud0")
@@ -176,8 +177,12 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_cwsd6"]
 radius = 20.024984
 
-[node name="Player" type="CharacterBody2D" unique_id=712376501]
+[node name="Player" type="CharacterBody2D" unique_id=712376501 groups=["player"]]
 script = ExtResource("1_v0kym")
+SavePointScene = ExtResource("2_sp377")
+DeathFloatDuration = 2.0
+DeathFloatSpeed = 100.0
+DeathFloatAcceleration = 4.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=833000993]
 texture_filter = 3
