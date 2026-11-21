@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://b6nlulyp3qwl3"]
+
+[ext_resource type="Script" uid="uid://dq3v3pmo8g0lq" path="res://packedScenes/platforms/PlatformMoving.cs" id="1_bxyf2"]
+[ext_resource type="Texture2D" uid="uid://dibsuwicrdvy8" path="res://GameExpo Files/Assets/Platforms/Platform_Moving.png" id="1_qnqow"]
+
+[sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_qnqow"]
+points = PackedVector2Array(23, 0, 23, -13, -23, -13, -23, 0, 0, 15)
+
+[node name="PlatformMoving" type="AnimatableBody2D" unique_id=373096010]
+scale = Vector2(1.3, 1.3)
+script = ExtResource("1_bxyf2")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=341087410]
+texture = ExtResource("1_qnqow")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=343023326]
+shape = SubResource("ConvexPolygonShape2D_qnqow")
+one_way_collision = true
