@@ -5,10 +5,23 @@ using System;
 public partial class Player : CharacterBody2D
 {
     [Export] public float Speed = 300.0f;
+    [Export] public PackedScene SavePointScene;
     public const float JumpVelocity = -400.0f;
     public const float Acceleration = 8.0f;
     public const float Deceleration = 12.0f;
-    public Vector2 respawnPoint; 
+    public Vector2 respawnPoint;
+    private bool _hasSaved = false;
+    private Polygon2D _savePointDot;
+
+    // Death float mode
+    private bool _deathFloatMode = false;
+    private float _deathFloatTimer = 0f;
+    [Export] public float DeathFloatDuration = 4.0f;
+    [Export] public float DeathFloatSpeed = 250.0f;
+    [Export] public float DeathFloatAcceleration = 3.0f;
+    [Export] public float DeathFloatFriction = 0.5f;
+
+
 
     private AnimatedSprite2D _animation;
 
@@ -24,17 +37,32 @@ public partial class Player : CharacterBody2D
 
     public override void _PhysicsProcess(double delta)
     {
+        if (Input.IsActionJustPressed("DEATH"))
+        {
+            respawn();
+
+            _deathFloatMode = true;
+            _deathFloatTimer = DeathFloatDuration;
+        }
+
+        if (!_hasSaved && Input.IsActionJustPressed("save"))
+        {
+            if (SavePointScene != null)
+            {
+                respawnPoint = GlobalPosition;
+                CreateSavePointDot();
+                _hasSaved = true;
+            }
+            else
+            {
+                GD.PushWarning("Assign your SavePoint scene in the Inspector first!");
+            }
+        }
 
         Vector2 velocity = Velocity;
 
         // Hide when  H is held
         _isHidden = Input.IsActionPressed("hide");
-
-        // Gravity 
-        if (!IsOnFloor())
-        {
-            velocity += GetGravity() * (float)delta;
-        }
 
         // Get movement direction
         Vector2 direction = Input.GetVector(
@@ -42,34 +70,73 @@ public partial class Player : CharacterBody2D
             "up", "down"
         );
 
-        // Jump (disabled while hiding)
-        if (!_isHidden &&
-            Input.IsActionJustPressed("ui_accept") &&
-            IsOnFloor())
+        // Death float timer
+        if (_deathFloatMode)
         {
-            velocity.Y = JumpVelocity;
+            _deathFloatTimer -= (float)delta;
+
+            if (_deathFloatTimer <= 0f)
+            {
+                _deathFloatMode = false;
+            }
         }
 
-        // Movement
-        if (_isHidden)
+        if (_deathFloatMode)
         {
-            // Stop horizontal movement immediately
-            velocity.X = 0;
+            // Free movement with momentum and drifting
+            if (direction != Vector2.Zero)
+            {
+                Vector2 targetVelocity = direction * DeathFloatSpeed;
+
+                velocity = velocity.Lerp(
+                    targetVelocity,
+                    DeathFloatAcceleration * (float)delta
+                );
+            }
+            else
+            {
+                // Slowly lose momentum when no input is held
+                velocity = velocity.Lerp(
+                    Vector2.Zero,
+                    DeathFloatFriction * (float)delta
+                );
+            }
         }
         else
         {
-            float targetSpeed = direction.X * Speed;
+            // Normal gravity
+            if (!IsOnFloor())
+            {
+                velocity += GetGravity() * (float)delta;
+            }
 
-            // Acceleration and deceleration
-            float lerpSpeed = direction.X != 0
-                ? Acceleration
-                : Deceleration;
+            // Jump (disabled while hiding)
+            if (!_isHidden &&
+                Input.IsActionJustPressed("ui_accept") &&
+                IsOnFloor())
+            {
+                velocity.Y = JumpVelocity;
+            }
 
-            velocity.X = Mathf.Lerp(
-                velocity.X,
-                targetSpeed,
-                lerpSpeed * (float)delta
-            );
+            // Normal horizontal movement
+            if (_isHidden)
+            {
+                velocity.X = 0;
+            }
+            else
+            {
+                float targetSpeed = direction.X * Speed;
+
+                float lerpSpeed = direction.X != 0
+                    ? Acceleration
+                    : Deceleration;
+
+                velocity.X = Mathf.Lerp(
+                    velocity.X,
+                    targetSpeed,
+                    lerpSpeed * (float)delta
+                );
+            }
         }
 
         // Apply velocity
@@ -83,11 +150,15 @@ public partial class Player : CharacterBody2D
         }
 
         // Animation selection
-        if (_isHidden)
+        if (_deathFloatMode)
+        {
+            PlayAnimation("idle"); // Replace with "float" if you create that animation
+        }
+        else if (_isHidden)
         {
             PlayAnimation("hidden");
         }
-        else if (Mathf.Abs(Velocity.X) > 10)
+        else if (Mathf.Abs(Velocity.X) > 10 && IsOnFloor())
         {
             PlayAnimation("drive");
         }
@@ -95,6 +166,28 @@ public partial class Player : CharacterBody2D
         {
             PlayAnimation("idle");
         }
+    }
+
+    public void kill()
+    {
+        respawn();
+
+        _deathFloatMode = true;
+        _deathFloatTimer = DeathFloatDuration;
+    }
+    private void CreateSavePointDot()
+    {
+        if (SavePointScene == null)
+        {
+            GD.PushWarning("SavePointScene has not been assigned in the Inspector!");
+            return;
+        }
+
+        Node2D savePointInstance = SavePointScene.Instantiate<Node2D>();
+
+        GetTree().CurrentScene.AddChild(savePointInstance);
+
+        savePointInstance.GlobalPosition = respawnPoint;
     }
 
     private void PlayAnimation(string animationName)
@@ -117,6 +210,8 @@ public partial class Player : CharacterBody2D
         _isHidden = false;
         PlayAnimation("idle");
     }
+
+
     public bool hasKey() {
         //retturn key status
         GD.Print("player keycheck not done, right now just returns true");
@@ -125,7 +220,8 @@ public partial class Player : CharacterBody2D
 
     public void respawn()
     {
-        this.GlobalPosition = respawnPoint;
+        GlobalPosition = respawnPoint;
+        Velocity = Vector2.Zero;
     }
     public bool isHidden() { return _isHidden; }    
 }
