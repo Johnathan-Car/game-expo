@@ -26,6 +26,7 @@ project/assembly_name="GameExpo"
 [global_group]
 
 player=""
+WEAK="The weak platform"
 
 [input]
 

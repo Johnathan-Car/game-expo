@@ -269,7 +269,7 @@ position = Vector2(1939, 376)
 texture = ExtResource("8_ghxyr")
 
 [node name="KeyCard" type="Sprite2D" parent="." unique_id=1711891718]
-position = Vector2(1031, 501)
+position = Vector2(1048, 501)
 texture = ExtResource("9_mq1fm")
 
 [node name="Intercom" type="Sprite2D" parent="." unique_id=1584418905]
@@ -303,6 +303,10 @@ texture = ExtResource("11_4shi0")
 
 [node name="Player" parent="." unique_id=712376501 instance=ExtResource("11_4exvx")]
 position = Vector2(157, 583)
+SavePointScene = null
+DeathFloatDuration = 4.0
+DeathFloatSpeed = 250.0
+DeathFloatAcceleration = 3.0
 
 [node name="Camera2D" type="Camera2D" parent="Player" unique_id=167991577]
 zoom = Vector2(1.6, 1.6)
@@ -320,7 +324,7 @@ position = Vector2(846.00006, 463.00003)
 position = Vector2(1253.0001, 356)
 
 [node name="Platform5" parent="." unique_id=225988436 instance=ExtResource("12_4exvx")]
-position = Vector2(1029, 547)
+position = Vector2(1046, 547)
 
 [node name="PlatformMoving" parent="." unique_id=373096010 instance=ExtResource("13_4oyh7")]
 position = Vector2(1318.0001, 261)

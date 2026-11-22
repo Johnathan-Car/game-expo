@@ -6,12 +6,12 @@
 [ext_resource type="Texture2D" uid="uid://dka58spgy04tj" path="res://GameExpo Files/Assets/Items/Star.png" id="8_6i8fd"]
 [ext_resource type="Texture2D" uid="uid://duuts17wa408" path="res://GameExpo Files/Assets/Items/key_card.png" id="9_i6emn"]
 [ext_resource type="Texture2D" uid="uid://chogcwlaqf06o" path="res://GameExpo Files/Assets/Tilemaps/tile2/Decor/Individual_PNGs/Door.png" id="10_st46j"]
-[ext_resource type="Texture2D" uid="uid://c5q5ct5bwmw5" path="res://GameExpo Files/Assets/Platforms/Platform_Weak.png" id="11_3qwtr"]
 [ext_resource type="Texture2D" uid="uid://wgg8h20p5o3j" path="res://GameExpo Files/Assets/Tilemaps/tile2/Decor/Individual_PNGs/Water.png" id="11_ejt80"]
 [ext_resource type="Texture2D" uid="uid://dmhwo6m551lt5" path="res://GameExpo Files/Assets/Tilemaps/tile2/Decor/Individual_PNGs/SpawnPoint.png" id="11_vh01d"]
 [ext_resource type="Texture2D" uid="uid://chmjovmbtasyo" path="res://GameExpo Files/Assets/Tilemaps/tile2/Traps/Individual_PNGs/laser_spikes_idle/tile000.png" id="12_3qwtr"]
 [ext_resource type="PackedScene" uid="uid://cxsb7uo0gxofi" path="res://packedScenes/player/player.tscn" id="12_31dcd"]
 [ext_resource type="PackedScene" uid="uid://iph7heyh7a4r" path="res://packedScenes/platforms/platform.tscn" id="13_31dcd"]
+[ext_resource type="PackedScene" uid="uid://nl8xbjxbd61" path="res://packedScenes/platforms/platform_weak.tscn" id="13_ux4pm"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_btx15"]
 atlas = ExtResource("6_wcti0")
@@ -200,91 +200,6 @@ position = Vector2(2146, 615)
 scale = Vector2(0.82, 0.3)
 texture = ExtResource("11_ejt80")
 
-[node name="PlatformWeak" type="Sprite2D" parent="." unique_id=617927290]
-position = Vector2(616.00006, 611.00006)
-scale = Vector2(1.3, 1.3)
-texture = ExtResource("11_3qwtr")
-
-[node name="PlatformWeak2" type="Sprite2D" parent="." unique_id=790720987]
-position = Vector2(834.00006, 611.00006)
-scale = Vector2(1.3, 1.3)
-texture = ExtResource("11_3qwtr")
-
-[node name="PlatformWeak6" type="Sprite2D" parent="." unique_id=607761198]
-position = Vector2(718, 568.00006)
-scale = Vector2(1.3, 1.3)
-texture = ExtResource("11_3qwtr")
-
-[node name="PlatformWeak7" type="Sprite2D" parent="." unique_id=1480381342]
-position = Vector2(946.00006, 568.00006)
-scale = Vector2(1.3, 1.3)
-texture = ExtResource("11_3qwtr")
-
-[node name="PlatformWeak8" type="Sprite2D" parent="." unique_id=827079608]
-position = Vector2(1206, 568.00006)
-scale = Vector2(1.3, 1.3)
-texture = ExtResource("11_3qwtr")
-
-[node name="PlatformWeak3" type="Sprite2D" parent="." unique_id=1843532595]
-position = Vector2(1075, 611.00006)
-scale = Vector2(1.3, 1.3)
-texture = ExtResource("11_3qwtr")
-
-[node name="PlatformWeak5" type="Sprite2D" parent="." unique_id=1037387693]
-position = Vector2(1320, 611.00006)
-scale = Vector2(1.3, 1.3)
-texture = ExtResource("11_3qwtr")
-
-[node name="PlatformWeak9" type="Sprite2D" parent="." unique_id=1768380589]
-position = Vector2(1738.0001, 115.00001)
-scale = Vector2(1.3, 1.3)
-texture = ExtResource("11_3qwtr")
-
-[node name="PlatformWeak10" type="Sprite2D" parent="." unique_id=1687975239]
-position = Vector2(1863.0001, 115.00001)
-scale = Vector2(1.3, 1.3)
-texture = ExtResource("11_3qwtr")
-
-[node name="PlatformWeak11" type="Sprite2D" parent="." unique_id=1941641904]
-position = Vector2(1981.0001, 115.00001)
-scale = Vector2(1.3, 1.3)
-texture = ExtResource("11_3qwtr")
-
-[node name="PlatformWeak12" type="Sprite2D" parent="." unique_id=779581999]
-position = Vector2(2080.0002, 95.00001)
-scale = Vector2(1.3, 1.3)
-texture = ExtResource("11_3qwtr")
-
-[node name="PlatformWeak13" type="Sprite2D" parent="." unique_id=1929237909]
-position = Vector2(2269.0002, 31.000008)
-scale = Vector2(1.3, 1.3)
-texture = ExtResource("11_3qwtr")
-
-[node name="PlatformWeak14" type="Sprite2D" parent="." unique_id=435134350]
-position = Vector2(2176.0002, 64)
-scale = Vector2(1.3, 1.3)
-texture = ExtResource("11_3qwtr")
-
-[node name="PlatformWeak15" type="Sprite2D" parent="." unique_id=916616970]
-position = Vector2(1492.0001, -52)
-scale = Vector2(1.3, 1.3)
-texture = ExtResource("11_3qwtr")
-
-[node name="PlatformWeak16" type="Sprite2D" parent="." unique_id=811118712]
-position = Vector2(1268.0001, -52)
-scale = Vector2(1.3, 1.3)
-texture = ExtResource("11_3qwtr")
-
-[node name="PlatformWeak17" type="Sprite2D" parent="." unique_id=1366802502]
-position = Vector2(1036.0001, -52)
-scale = Vector2(1.3, 1.3)
-texture = ExtResource("11_3qwtr")
-
-[node name="PlatformWeak18" type="Sprite2D" parent="." unique_id=838464231]
-position = Vector2(810, -52)
-scale = Vector2(1.3, 1.3)
-texture = ExtResource("11_3qwtr")
-
 [node name="SpikeTrap" type="Sprite2D" parent="." unique_id=1588207445]
 position = Vector2(608, 22)
 texture = ExtResource("12_3qwtr")
@@ -321,20 +236,20 @@ position = Vector2(1873.0001, 331.00003)
 [node name="Platform26" parent="." unique_id=961838943 instance=ExtResource("13_31dcd")]
 position = Vector2(1724, 302.00003)
 
-[node name="Platform27" parent="." unique_id=1870858562 instance=ExtResource("13_31dcd")]
-position = Vector2(1603, 302.00003)
-
 [node name="Platform28" parent="." unique_id=1545835108 instance=ExtResource("13_31dcd")]
-position = Vector2(1603, 207.00003)
+position = Vector2(1603, 226.00002)
 
 [node name="Platform29" parent="." unique_id=490764559 instance=ExtResource("13_31dcd")]
-position = Vector2(1603, 118.000015)
+position = Vector2(1603, 152.00002)
 
 [node name="Platform30" parent="." unique_id=1515911004 instance=ExtResource("13_31dcd")]
-position = Vector2(1603, 34.000008)
+position = Vector2(1603, 87.000015)
 
 [node name="Platform31" parent="." unique_id=297490026 instance=ExtResource("13_31dcd")]
-position = Vector2(1603, -51)
+position = Vector2(1603, 18)
+
+[node name="Platform37" parent="." unique_id=942547267 instance=ExtResource("13_31dcd")]
+position = Vector2(1603.0001, -50.000004)
 
 [node name="Platform32" parent="." unique_id=183214546 instance=ExtResource("13_31dcd")]
 position = Vector2(1382.0001, -51)
@@ -353,6 +268,61 @@ position = Vector2(583.00006, -94)
 
 [node name="Player" parent="." unique_id=712376501 instance=ExtResource("12_31dcd")]
 position = Vector2(157, 7)
+SavePointScene = null
+DeathFloatDuration = 4.0
+DeathFloatSpeed = 250.0
+DeathFloatAcceleration = 3.0
 
 [node name="Camera2D" type="Camera2D" parent="Player" unique_id=527098492]
 zoom = Vector2(1.6, 1.6)
+
+[node name="PlatformWeak4" parent="." unique_id=1727002278 instance=ExtResource("13_ux4pm")]
+position = Vector2(616, 611)
+
+[node name="PlatformWeak19" parent="." unique_id=1149221062 instance=ExtResource("13_ux4pm")]
+position = Vector2(718, 568)
+
+[node name="PlatformWeak20" parent="." unique_id=1751616974 instance=ExtResource("13_ux4pm")]
+position = Vector2(834, 611)
+
+[node name="PlatformWeak21" parent="." unique_id=1581589893 instance=ExtResource("13_ux4pm")]
+position = Vector2(946.00006, 570.00006)
+
+[node name="PlatformWeak22" parent="." unique_id=474764851 instance=ExtResource("13_ux4pm")]
+position = Vector2(1076, 611)
+
+[node name="PlatformWeak23" parent="." unique_id=118149356 instance=ExtResource("13_ux4pm")]
+position = Vector2(1206, 567.00006)
+
+[node name="PlatformWeak24" parent="." unique_id=1499755103 instance=ExtResource("13_ux4pm")]
+position = Vector2(1320.0001, 612)
+
+[node name="PlatformWeak25" parent="." unique_id=1396677670 instance=ExtResource("13_ux4pm")]
+position = Vector2(1713, 117)
+
+[node name="PlatformWeak26" parent="." unique_id=508236582 instance=ExtResource("13_ux4pm")]
+position = Vector2(1838, 117)
+
+[node name="PlatformWeak27" parent="." unique_id=1115027004 instance=ExtResource("13_ux4pm")]
+position = Vector2(1956, 117)
+
+[node name="PlatformWeak28" parent="." unique_id=1665537405 instance=ExtResource("13_ux4pm")]
+position = Vector2(2080, 96)
+
+[node name="PlatformWeak29" parent="." unique_id=999478356 instance=ExtResource("13_ux4pm")]
+position = Vector2(2176, 64)
+
+[node name="PlatformWeak30" parent="." unique_id=2052087946 instance=ExtResource("13_ux4pm")]
+position = Vector2(2269, 32)
+
+[node name="PlatformWeak31" parent="." unique_id=1841891699 instance=ExtResource("13_ux4pm")]
+position = Vector2(1492, -51)
+
+[node name="PlatformWeak32" parent="." unique_id=1241418933 instance=ExtResource("13_ux4pm")]
+position = Vector2(1268, -52)
+
+[node name="PlatformWeak33" parent="." unique_id=1096356720 instance=ExtResource("13_ux4pm")]
+position = Vector2(1036, -51)
+
+[node name="PlatformWeak34" parent="." unique_id=2061652667 instance=ExtResource("13_ux4pm")]
+position = Vector2(811, -51)

@@ -143,6 +143,23 @@ public partial class Player : CharacterBody2D
         Velocity = velocity;
         MoveAndSlide();
 
+          // Checking Collision for collectables / weak platform
+        for (int i = 0; i < GetSlideCollisionCount(); i++)
+        {
+            KinematicCollision2D collision = GetSlideCollision(i);
+
+            Node collider = collision.GetCollider() as Node;
+
+            if (collider.IsInGroup("WEAK"))
+            {
+                GD.Print("The player touched a Weak Platform!");
+
+                // Delete the Weak Platform
+				DeleteWeakPlatformDelay(collider);
+            }
+        }
+          //
+
         // Flip character
         if (!_isHidden && direction.X != 0)
         {
@@ -168,6 +185,16 @@ public partial class Player : CharacterBody2D
         }
     }
 
+    // Specifically only for Weak Platform Delayed Deletion
+    private async void DeleteWeakPlatformDelay(Node collider)
+    {
+        await ToSignal(GetTree().CreateTimer(1.0), SceneTreeTimer.SignalName.Timeout);
+
+        if (IsInstanceValid(collider))
+        {
+            collider.QueueFree();
+        }
+    }
     public void kill()
     {
         respawn();
