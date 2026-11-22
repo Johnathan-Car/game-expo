@@ -150,12 +150,30 @@ public partial class Player : CharacterBody2D
 
             Node collider = collision.GetCollider() as Node;
 
+            // Weak Platform
             if (collider.IsInGroup("WEAK"))
             {
                 GD.Print("The player touched a Weak Platform!");
 
                 // Delete the Weak Platform
 				DeleteWeakPlatformDelay(collider);
+            }
+
+            // Collectables
+            if(collider.IsInGroup("COLLECTABLE"))
+            {
+                GD.Print("The player touched a Collectable!");
+                if(collider.IsInGroup("KEYCARD"))
+                {
+                    GD.Print("The player touched a Keycard!");           
+                }
+                else if(collider.IsInGroup("STAR"))
+                {
+                    GD.Print("The player touched a Star!");           
+                }
+                // Delete the Collectable
+				collider.QueueFree();
+                
             }
         }
           //

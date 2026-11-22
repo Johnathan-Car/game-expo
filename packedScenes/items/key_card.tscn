@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://cjqrrwsqaa6u6"]
+
+[ext_resource type="Texture2D" uid="uid://duuts17wa408" path="res://GameExpo Files/Assets/Items/key_card.png" id="1_wwsvl"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4v6l2"]
+size = Vector2(37, 37)
+
+[node name="KeyCard" type="StaticBody2D" unique_id=493158505 groups=["COLLECTABLE"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=859229987]
+position = Vector2(-1.5, 2.5)
+shape = SubResource("RectangleShape2D_4v6l2")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1125222477]
+texture = ExtResource("1_wwsvl")

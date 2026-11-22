@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://bv8qk8iwib2md"]
+
+[ext_resource type="Texture2D" uid="uid://dka58spgy04tj" path="res://GameExpo Files/Assets/Items/Star.png" id="1_hw7km"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2st0w"]
+size = Vector2(30, 28)
+
+[node name="Star" type="StaticBody2D" unique_id=1929158988 groups=["COLLECTABLE"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=294189153]
+position = Vector2(0, 2)
+shape = SubResource("RectangleShape2D_2st0w")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=480445489]
+texture = ExtResource("1_hw7km")
