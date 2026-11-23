@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://buecs3g202pgy" path="res://GameExpo Files/Assets/Flyer/FlyingEnemyspritesheet.png" id="6_mbl8p"]
 [ext_resource type="Texture2D" uid="uid://dka58spgy04tj" path="res://GameExpo Files/Assets/Items/Star.png" id="8_ghxyr"]
 [ext_resource type="Texture2D" uid="uid://duuts17wa408" path="res://GameExpo Files/Assets/Items/key_card.png" id="9_mq1fm"]
+[ext_resource type="PackedScene" uid="uid://wnr07idgeirq" path="res://packedScenes/UI/ui.tscn" id="10_4exvx"]
 [ext_resource type="Texture2D" uid="uid://chogcwlaqf06o" path="res://GameExpo Files/Assets/Tilemaps/tile2/Decor/Individual_PNGs/Door.png" id="10_8jdg1"]
 [ext_resource type="PackedScene" uid="uid://cxsb7uo0gxofi" path="res://packedScenes/player/player.tscn" id="11_4exvx"]
 [ext_resource type="Texture2D" uid="uid://dmhwo6m551lt5" path="res://GameExpo Files/Assets/Tilemaps/tile2/Decor/Individual_PNGs/SpawnPoint.png" id="11_4shi0"]
@@ -307,6 +308,12 @@ SavePointScene = null
 DeathFloatDuration = 4.0
 DeathFloatSpeed = 250.0
 DeathFloatAcceleration = 3.0
+
+[node name="UI" parent="Player" unique_id=1187077783 instance=ExtResource("10_4exvx")]
+offset_left = -357.0
+offset_top = -211.0
+offset_right = -357.0
+offset_bottom = -210.83699
 
 [node name="Camera2D" type="Camera2D" parent="Player" unique_id=167991577]
 zoom = Vector2(1.6, 1.6)

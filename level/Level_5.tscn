@@ -14,6 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://bp2pc681pm4ow" path="res://GameExpo Files/Assets/Tilemaps/tile2/Decor/Individual_PNGs/Cage.png" id="13_epfo6"]
 [ext_resource type="Texture2D" uid="uid://c3p7imgk2l5bh" path="res://GameExpo Files/Assets/Tilemaps/tile2/Traps/laser_activate.png" id="14_4l2ut"]
 [ext_resource type="Texture2D" uid="uid://deyx80t2k6v4d" path="res://GameExpo Files/Assets/Tilemaps/tile2/Traps/Individual_PNGs/laser_spikes_deactivate/tile007.png" id="16_crv4i"]
+[ext_resource type="PackedScene" uid="uid://wnr07idgeirq" path="res://packedScenes/UI/ui.tscn" id="17_u8w3q"]
 [ext_resource type="Texture2D" uid="uid://ci11grr1bjc3y" path="res://GameExpo Files/Assets/Items/Target.png" id="19_kf872"]
 [ext_resource type="PackedScene" uid="uid://cxsb7uo0gxofi" path="res://packedScenes/player/player.tscn" id="19_u8w3q"]
 [ext_resource type="PackedScene" uid="uid://iph7heyh7a4r" path="res://packedScenes/platforms/platform.tscn" id="20_u8w3q"]
@@ -500,6 +501,12 @@ SavePointScene = null
 DeathFloatDuration = 4.0
 DeathFloatSpeed = 250.0
 DeathFloatAcceleration = 3.0
+
+[node name="UI" parent="Player" unique_id=1187077783 instance=ExtResource("17_u8w3q")]
+offset_left = -357.0
+offset_top = -212.0
+offset_right = -357.0
+offset_bottom = -211.83699
 
 [node name="Camera2D" type="Camera2D" parent="Player" unique_id=1296041565]
 zoom = Vector2(1.6, 1.6)

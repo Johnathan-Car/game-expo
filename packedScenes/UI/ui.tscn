@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://wnr07idgeirq"]
+
+[ext_resource type="Texture2D" uid="uid://duuts17wa408" path="res://GameExpo Files/Assets/Items/key_card.png" id="1_xsmx3"]
+[ext_resource type="Texture2D" uid="uid://dka58spgy04tj" path="res://GameExpo Files/Assets/Items/Star.png" id="2_cr14y"]
+
+[node name="UI" type="Panel" unique_id=1187077783]
+anchors_preset = -1
+anchor_right = 0.62100005
+anchor_bottom = 0.155
+offset_right = -0.39208984
+offset_bottom = 0.16300964
+
+[node name="KeyCard" type="TextureRect" parent="." unique_id=1090041708]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("1_xsmx3")
+
+[node name="Star" type="TextureRect" parent="." unique_id=1127873407]
+layout_mode = 0
+offset_left = 658.0
+offset_right = 722.0
+offset_bottom = 64.0
+texture = ExtResource("2_cr14y")
