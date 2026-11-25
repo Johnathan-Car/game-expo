@@ -5,7 +5,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4v6l2"]
 size = Vector2(842, 69)
 
-[node name="Trap_Water" type="StaticBody2D" unique_id=2142204749]
+[node name="Trap_Water" type="StaticBody2D" unique_id=2142204749 groups=["TRAP"]]
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=972542735]
 scale = Vector2(0.82, 0.3)

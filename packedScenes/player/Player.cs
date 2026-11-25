@@ -13,6 +13,7 @@ public partial class Player : CharacterBody2D
     public const float Deceleration = 12.0f;
     public Vector2 respawnPoint;
     private bool _hasSaved = false;
+    private bool _playerHit = false;
     private Polygon2D _savePointDot;
 
     // Death float mode
@@ -161,8 +162,14 @@ public partial class Player : CharacterBody2D
 				DeleteWeakPlatformDelay(collider);
             }
 
+            // Traps
+            if(collider.IsInGroup("TRAP"))
+            {
+                GD.Print("The player touched a Trap!");
+            }
+
             // Collectables
-            if(collider.IsInGroup("COLLECTABLE"))
+            if (collider.IsInGroup("COLLECTABLE"))
             {
                 GD.Print("The player touched a Collectable!");
                 if(collider.IsInGroup("KEYCARD"))
@@ -189,7 +196,12 @@ public partial class Player : CharacterBody2D
         }
 
         // Animation selection
-        if (_deathFloatMode)
+        if (_playerHit == true)
+        {
+            PlayAnimation("death");
+            _playerHit = false;
+        }
+        else if (_deathFloatMode)
         {
             PlayAnimation("idle"); // Replace with "float" if you create that animation
         }
@@ -209,6 +221,17 @@ public partial class Player : CharacterBody2D
 
     // Specifically only for Weak Platform Delayed Deletion
     private async void DeleteWeakPlatformDelay(Node collider)
+    {
+        await ToSignal(GetTree().CreateTimer(1.0), SceneTreeTimer.SignalName.Timeout);
+
+        if (IsInstanceValid(collider))
+        {
+            collider.QueueFree();
+        }
+    }
+
+    // Specifically only for Respawning at start location
+    private async void Death(Node collider)
     {
         await ToSignal(GetTree().CreateTimer(1.0), SceneTreeTimer.SignalName.Timeout);
 

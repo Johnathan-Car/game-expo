@@ -3,8 +3,6 @@
 [ext_resource type="TileSet" uid="uid://b4j73oa34pfkb" path="res://GameExpo Files/Assets/Tilemaps/tileSet2.tres" id="1_ejt80"]
 [ext_resource type="Texture2D" uid="uid://bnacbl31kfr1c" path="res://GameExpo Files/Assets/Walker/WalkerPNG.png" id="3_31dcd"]
 [ext_resource type="Texture2D" uid="uid://buecs3g202pgy" path="res://GameExpo Files/Assets/Flyer/FlyingEnemyspritesheet.png" id="6_wcti0"]
-[ext_resource type="Texture2D" uid="uid://dka58spgy04tj" path="res://GameExpo Files/Assets/Items/Star.png" id="8_6i8fd"]
-[ext_resource type="Texture2D" uid="uid://duuts17wa408" path="res://GameExpo Files/Assets/Items/key_card.png" id="9_i6emn"]
 [ext_resource type="Texture2D" uid="uid://chogcwlaqf06o" path="res://GameExpo Files/Assets/Tilemaps/tile2/Decor/Individual_PNGs/Door.png" id="10_st46j"]
 [ext_resource type="Texture2D" uid="uid://chmjovmbtasyo" path="res://GameExpo Files/Assets/Tilemaps/tile2/Traps/Individual_PNGs/laser_spikes_idle/tile000.png" id="12_3qwtr"]
 [ext_resource type="PackedScene" uid="uid://cxsb7uo0gxofi" path="res://packedScenes/player/player.tscn" id="12_31dcd"]
@@ -13,6 +11,8 @@
 [ext_resource type="PackedScene" uid="uid://b1rg13t1n4pgm" path="res://packedScenes/spawnLocation/spawnMarker.tscn" id="13_506ao"]
 [ext_resource type="PackedScene" uid="uid://nl8xbjxbd61" path="res://packedScenes/platforms/platform_weak.tscn" id="13_ux4pm"]
 [ext_resource type="PackedScene" uid="uid://ceqbkkudp287m" path="res://packedScenes/traps/trap_water.tscn" id="13_wcti0"]
+[ext_resource type="PackedScene" uid="uid://bv8qk8iwib2md" path="res://packedScenes/items/star.tscn" id="14_506ao"]
+[ext_resource type="PackedScene" uid="uid://cjqrrwsqaa6u6" path="res://packedScenes/items/key_card.tscn" id="14_ux4pm"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_btx15"]
 atlas = ExtResource("6_wcti0")
@@ -165,14 +165,6 @@ position = Vector2(409, 162)
 scale = Vector2(1.2, 1.2)
 sprite_frames = SubResource("SpriteFrames_jtd5m")
 animation = &"default_2"
-
-[node name="Star" type="Sprite2D" parent="." unique_id=400589531]
-position = Vector2(2269, -36.99997)
-texture = ExtResource("8_6i8fd")
-
-[node name="KeyCard" type="Sprite2D" parent="." unique_id=1711891718]
-position = Vector2(640, -3)
-texture = ExtResource("9_i6emn")
 
 [node name="Intercom" type="Sprite2D" parent="." unique_id=1584418905]
 position = Vector2(256, -26.000008)
@@ -329,3 +321,9 @@ scale = Vector2(0.99, 1)
 
 [node name="Trap_Water2" parent="." unique_id=1782249951 instance=ExtResource("13_wcti0")]
 position = Vector2(2148, 614)
+
+[node name="KeyCard2" parent="." unique_id=493158505 instance=ExtResource("14_ux4pm")]
+position = Vector2(641, -4)
+
+[node name="Star2" parent="." unique_id=1929158988 instance=ExtResource("14_506ao")]
+position = Vector2(2269, -37)

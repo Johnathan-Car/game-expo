@@ -3,16 +3,16 @@
 [ext_resource type="TileSet" uid="uid://b4j73oa34pfkb" path="res://GameExpo Files/Assets/Tilemaps/tileSet2.tres" id="1_4lcfb"]
 [ext_resource type="Texture2D" uid="uid://bnacbl31kfr1c" path="res://GameExpo Files/Assets/Walker/WalkerPNG.png" id="3_k11mu"]
 [ext_resource type="Texture2D" uid="uid://c3p7imgk2l5bh" path="res://GameExpo Files/Assets/Tilemaps/tile2/Traps/laser_activate.png" id="5_dut5s"]
-[ext_resource type="Texture2D" uid="uid://dka58spgy04tj" path="res://GameExpo Files/Assets/Items/Star.png" id="8_vb3ao"]
-[ext_resource type="Texture2D" uid="uid://duuts17wa408" path="res://GameExpo Files/Assets/Items/key_card.png" id="9_36sxm"]
 [ext_resource type="Texture2D" uid="uid://chogcwlaqf06o" path="res://GameExpo Files/Assets/Tilemaps/tile2/Decor/Individual_PNGs/Door.png" id="10_hriet"]
 [ext_resource type="Texture2D" uid="uid://dkmpa8bb56p7m" path="res://GameExpo Files/Assets/Tilemaps/tile2/Traps/Individual_PNGs/laser_spikes_activate/tile007.png" id="11_4lcfb"]
 [ext_resource type="Texture2D" uid="uid://deyx80t2k6v4d" path="res://GameExpo Files/Assets/Tilemaps/tile2/Traps/Individual_PNGs/laser_spikes_deactivate/tile007.png" id="11_sassa"]
 [ext_resource type="PackedScene" uid="uid://wnr07idgeirq" path="res://packedScenes/UI/ui.tscn" id="12_k11mu"]
 [ext_resource type="PackedScene" uid="uid://cxsb7uo0gxofi" path="res://packedScenes/player/player.tscn" id="12_sassa"]
+[ext_resource type="PackedScene" uid="uid://cjqrrwsqaa6u6" path="res://packedScenes/items/key_card.tscn" id="13_314ph"]
 [ext_resource type="PackedScene" uid="uid://b1rg13t1n4pgm" path="res://packedScenes/spawnLocation/spawnMarker.tscn" id="13_dut5s"]
 [ext_resource type="PackedScene" uid="uid://iph7heyh7a4r" path="res://packedScenes/platforms/platform.tscn" id="13_hrlyt"]
 [ext_resource type="Texture2D" uid="uid://ci11grr1bjc3y" path="res://GameExpo Files/Assets/Items/Target.png" id="13_k11mu"]
+[ext_resource type="PackedScene" uid="uid://bv8qk8iwib2md" path="res://packedScenes/items/star.tscn" id="14_hrlyt"]
 
 [sub_resource type="DrawableTexture2D" id="DrawableTexture2D_4v6l2"]
 
@@ -157,14 +157,6 @@ texture_filter = 6
 position = Vector2(846, -203)
 scale = Vector2(1.5, 1.5)
 texture = ExtResource("3_k11mu")
-
-[node name="Star" type="Sprite2D" parent="." unique_id=400589531]
-position = Vector2(197.00012, -19.99997)
-texture = ExtResource("8_vb3ao")
-
-[node name="KeyCard" type="Sprite2D" parent="." unique_id=1711891718]
-position = Vector2(1502, 162)
-texture = ExtResource("9_36sxm")
 
 [node name="Intercom" type="Sprite2D" parent="." unique_id=1584418905]
 position = Vector2(2092, 528)
@@ -360,3 +352,9 @@ position = Vector2(1033.0001, -146)
 
 [node name="spawnMarker" parent="." unique_id=284729761 instance=ExtResource("13_dut5s")]
 position = Vector2(2245, 582)
+
+[node name="Star2" parent="." unique_id=1929158988 instance=ExtResource("14_hrlyt")]
+position = Vector2(197, -6)
+
+[node name="KeyCard2" parent="." unique_id=493158505 instance=ExtResource("13_314ph")]
+position = Vector2(1502, 162)
