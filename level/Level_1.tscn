@@ -95,8 +95,9 @@ position = Vector2(135, 576)
 scale = Vector2(2, 2)
 texture = ExtResource("11_0ivd0")
 
-[node name="Player" parent="." unique_id=712376501 instance=ExtResource("12_0ivd0")]
+[node name="Player" parent="." unique_id=712376501 node_paths=PackedStringArray("UI") instance=ExtResource("12_0ivd0")]
 position = Vector2(2197, 575)
+UI = NodePath("UI")
 
 [node name="UI" parent="Player" unique_id=1187077783 instance=ExtResource("8_0ivd0")]
 offset_left = -359.0

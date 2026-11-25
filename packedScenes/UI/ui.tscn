@@ -1,14 +1,18 @@
 [gd_scene format=3 uid="uid://wnr07idgeirq"]
 
-[ext_resource type="Texture2D" uid="uid://duuts17wa408" path="res://GameExpo Files/Assets/Items/key_card.png" id="1_xsmx3"]
-[ext_resource type="Texture2D" uid="uid://dka58spgy04tj" path="res://GameExpo Files/Assets/Items/Star.png" id="2_cr14y"]
+[ext_resource type="Script" uid="uid://d2whry8gbx55a" path="res://packedScenes/UI/Ui.cs" id="1_cr14y"]
+[ext_resource type="Texture2D" uid="uid://cxsw1r8yv5mo1" path="res://GameExpo Files/Assets/Items/key_card_inactive.png" id="1_xsmx3"]
+[ext_resource type="Texture2D" uid="uid://k4pvnfon72mb" path="res://GameExpo Files/Assets/Items/Star_inactive.png" id="2_cr14y"]
 
-[node name="UI" type="Panel" unique_id=1187077783]
+[node name="UI" type="Panel" unique_id=1187077783 node_paths=PackedStringArray("MyTextureRect", "MyTextureRect2")]
 anchors_preset = -1
 anchor_right = 0.62100005
 anchor_bottom = 0.155
 offset_right = -0.39208984
 offset_bottom = 0.16300964
+script = ExtResource("1_cr14y")
+MyTextureRect = NodePath("KeyCard")
+MyTextureRect2 = NodePath("Star")
 
 [node name="KeyCard" type="TextureRect" parent="." unique_id=1090041708]
 layout_mode = 0
