@@ -28,6 +28,7 @@ project/assembly_name="GameExpo"
 player=""
 WEAK="The weak platform"
 COLLECTABLE="Key or Star"
+enemy=""
 
 [input]
 
