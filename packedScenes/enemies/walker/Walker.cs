@@ -3,11 +3,6 @@ using Godot;
 
 public partial class Walker : CharacterBody2D
 {
-    [Export] public float PatrolSpeed = 45f;
-    [Export] public float ChaseSpeed = 90f;
-    [Export] public float TurnPause = 1f;
-    [Export] public float DetectionRange = 180f;
-
     private enum WalkerState
     {
         Patrol,
@@ -16,251 +11,225 @@ public partial class Walker : CharacterBody2D
 
     private WalkerState state = WalkerState.Patrol;
 
+    [Export] public float PatrolSpeed = 45.0f;
+    [Export] public float ChaseSpeed = 90.0f;
+    [Export] public float ArrivalDistance = 3.0f;
+    [Export] public float ChaseCooldown = 1.0f;
+
+    private float chaseCooldownTimer = 0.0f;
+    private float lastKnownPlayerX;
+
+    private int facingDirection = 1;
+
+    private Player player;
     private AnimatedSprite2D sprite;
     private RayCast2D floorChecker;
     private RayCast2D detection;
     private Area2D contactArea;
 
-
-    private Player player;
-
-    private float pointAX;
-    private float pointBX;
-    private float targetX;
-    private float playerX;
-
-    private int patrolDirection = 1;
-    private float turnTimer = 0f;
+    private Vector2 patrolPositionA;
+    private Vector2 patrolPositionB;
+    private Vector2 currentPatrolTarget;
 
     public override void _Ready()
     {
+        base._Ready();
+
         player = GetTree().GetFirstNodeInGroup("player") as Player;
+
+        if (player != null)
+            AddCollisionExceptionWith(player);
+
+        foreach (Node enemy in GetTree().GetNodesInGroup("enemy"))
+        {
+            if (enemy is PhysicsBody2D body && body != this)
+                AddCollisionExceptionWith(body);
+        }
+
         sprite = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
         floorChecker = GetNode<RayCast2D>("FloorChecker");
         detection = GetNode<RayCast2D>("Detection");
+
+        patrolPositionA = GetNode<Marker2D>("PatrolPointA").GlobalPosition;
+        patrolPositionB = GetNode<Marker2D>("PatrolPointB").GlobalPosition;
+
+        currentPatrolTarget = patrolPositionA;
+
         contactArea = GetNode<Area2D>("ContactArea");
+        contactArea.BodyEntered += CollisionHandler;
+    }
 
-        floorChecker.Enabled = true;
-        detection.Enabled = true;
+    private void CollisionHandler(Node2D other)
+    {
+        if (other is not Player body)
+            return;
 
-        UpdatePatrolPoints();
+        if (body.isHidden() && state == WalkerState.Patrol)
+            return;
 
-        // Start by walking toward point B.
-        patrolDirection = 1;
-        targetX = pointBX;
+        body.kill();
 
-        sprite.Play("walk");
+        state = WalkerState.Patrol;
+        chaseCooldownTimer = ChaseCooldown;
+
+        // Turn away from the player
+        currentPatrolTarget = facingDirection > 0
+            ? patrolPositionA
+            : patrolPositionB;
     }
 
     public override void _PhysicsProcess(double delta)
     {
-        float dt = (float)delta;
+        base._PhysicsProcess(delta);
 
-        CheckPlayerContact();
-        DetectPlayer();
-
-        // Apply gravity.
         if (!IsOnFloor())
+            Velocity += GetGravity() * (float)delta;
+
+        // Update chase cooldown
+        if (chaseCooldownTimer > 0)
+            chaseCooldownTimer = Mathf.Max(0, chaseCooldownTimer - (float)delta);
+
+        bool playerDetected = chaseCooldownTimer <= 0 && DetectPlayer();
+
+        if (playerDetected)
+            state = WalkerState.Chase;
+
+        Vector2 targetPosition;
+        float movementSpeed;
+
+        if (state == WalkerState.Chase)
         {
-            Velocity = new Vector2(
-                Velocity.X,
-                Velocity.Y + GetGravity().Y * dt
-            );
+            targetPosition = playerDetected
+                ? player.GlobalPosition
+                : new Vector2(lastKnownPlayerX, GlobalPosition.Y);
+
+            movementSpeed = ChaseSpeed;
+
+            // Return to patrol after reaching the last known player position
+            if (!playerDetected &&
+                Mathf.Abs(GlobalPosition.X - lastKnownPlayerX) <= ArrivalDistance)
+            {
+                ReturnToPatrol();
+                targetPosition = currentPatrolTarget;
+                movementSpeed = PatrolSpeed;
+            }
         }
-        else if (Velocity.Y > 0f)
+        else
         {
-            Velocity = new Vector2(Velocity.X, 0f);
+            targetPosition = currentPatrolTarget;
+            movementSpeed = PatrolSpeed;
+
+            // Switch patrol points when reaching the current target
+            if (Mathf.Abs(targetPosition.X - GlobalPosition.X) <= ArrivalDistance)
+            {
+                currentPatrolTarget = currentPatrolTarget == patrolPositionA
+                    ? patrolPositionB
+                    : patrolPositionA;
+
+                targetPosition = currentPatrolTarget;
+            }
         }
 
-        // Pause briefly when turning around.
-        if (turnTimer > 0f)
-        {
-            turnTimer -= dt;
-            Velocity = new Vector2(0f, Velocity.Y);
-            sprite.Play("idle");
+        float direction = Mathf.Sign(targetPosition.X - GlobalPosition.X);
 
-            MoveAndSlide();
-            return;
+        // Check for a cliff before moving
+        if (direction != 0)
+        {
+            SetFacingDirection((int)direction);
+            floorChecker.ForceRaycastUpdate();
+
+            if (!floorChecker.IsColliding())
+            {
+                Velocity = new Vector2(0, Velocity.Y);
+
+                state = WalkerState.Patrol;
+
+                // Turn away from the cliff
+                if (currentPatrolTarget == patrolPositionA)
+                {
+                    currentPatrolTarget = patrolPositionB;
+                } else
+                {
+                    currentPatrolTarget = patrolPositionA;
+                }
+
+                PlayAnimation("idle");
+                MoveAndSlide();
+                return;
+            }
         }
 
-        if (state == WalkerState.Patrol)
-        {
-            Patrol();
-        }
-        else if (state == WalkerState.Chase)
-        {
-            ChasePlayer();
-        }
+        Velocity = new Vector2(direction * movementSpeed, Velocity.Y);
+
+        PlayAnimation(direction == 0 ? "idle" : "walk");
 
         MoveAndSlide();
     }
 
-    private void UpdatePatrolPoints()
+    private bool DetectPlayer()
     {
-        pointAX = GetNode<Marker2D>("PatrolPointA").GlobalPosition.X;
-        pointBX = GetNode<Marker2D>("PatrolPointB").GlobalPosition.X;
-    }
+        if (player == null || !GodotObject.IsInstanceValid(player))
+            return false;
 
-    private void DetectPlayer()
-    {
-        if (player == null)
-            return;
-
-        // Always check hiding, even while already chasing.
         if (player.isHidden())
-        {
-            if (state == WalkerState.Chase)
-                StopChasing();
-
-            return;
-        }
+            return false;
 
         detection.ForceRaycastUpdate();
 
-        // Chase only when the forward ray hits the player.
-        if (detection.IsColliding() &&
-            detection.GetCollider() == player)
+        if (detection.GetCollider() is Player detectedPlayer)
         {
-            playerX = player.GlobalPosition.X;
-            state = WalkerState.Chase;
-            return;
+            lastKnownPlayerX = detectedPlayer.GlobalPosition.X;
+            return true;
         }
 
-        // Player is no longer detected.
-        if (state == WalkerState.Chase)
-            StopChasing();
+        return false;
     }
 
-    private void StopChasing()
+    private void SetFacingDirection(int direction)
+    {
+        if (direction == facingDirection)
+            return;
+
+        facingDirection = direction;
+        sprite.FlipH = direction < 0;
+
+        // Mirror both raycasts horizontally
+        floorChecker.Position = new Vector2(
+            Mathf.Abs(floorChecker.Position.X) * direction,
+            floorChecker.Position.Y
+        );
+
+        floorChecker.TargetPosition = new Vector2(
+            Mathf.Abs(floorChecker.TargetPosition.X) * direction,
+            floorChecker.TargetPosition.Y
+        );
+
+        detection.Position = new Vector2(
+            Mathf.Abs(detection.Position.X) * direction,
+            detection.Position.Y
+        );
+
+        detection.TargetPosition = new Vector2(
+            Mathf.Abs(detection.TargetPosition.X) * direction,
+            detection.TargetPosition.Y
+        );
+    }
+
+    private void PlayAnimation(string animation)
+    {
+        if (sprite.Animation != animation || !sprite.IsPlaying())
+            sprite.Play(animation);
+    }
+
+    private void ReturnToPatrol()
     {
         state = WalkerState.Patrol;
 
-        if (Mathf.Abs(GlobalPosition.X - pointAX) <
-            Mathf.Abs(GlobalPosition.X - pointBX))
-        {
-            patrolDirection = -1;
-        }
-        else
-        {
-            patrolDirection = 1;
-        }
+        float distanceA = Mathf.Abs(GlobalPosition.X - patrolPositionA.X);
+        float distanceB = Mathf.Abs(GlobalPosition.X - patrolPositionB.X);
 
-        targetX = patrolDirection == 1 ? pointBX : pointAX;
-
-        Velocity = new Vector2(0f, Velocity.Y);
-    }
-
-    private void Patrol()
-    {
-        float distance = Mathf.Abs(GlobalPosition.X - targetX);
-
-        // Reached the current patrol point.
-        if (distance < 4f)
-        {
-            TurnAround();
-            return;
-        }
-
-        float direction = Mathf.Sign(
-            targetX - GlobalPosition.X
-        );
-
-        // Turn around if there is no floor ahead.
-        if (!HasFloorAhead(direction))
-        {
-            TurnAround();
-            return;
-        }
-
-        Walk(direction, PatrolSpeed);
-    }
-
-    private void TurnAround()
-    {
-        patrolDirection *= -1;
-
-        targetX = patrolDirection == 1
-            ? pointBX
-            : pointAX;
-
-        Velocity = new Vector2(0f, Velocity.Y);
-
-        turnTimer = TurnPause;
-
-        sprite.Play("idle");
-        SetFacingDirection(patrolDirection);
-    }
-
-    private void ChasePlayer()
-    {
-        float difference = playerX - GlobalPosition.X;
-
-        if (Mathf.Abs(difference) < 4f)
-        {
-            Velocity = new Vector2(0f, Velocity.Y);
-            sprite.Play("idle");
-            return;
-        }
-
-        float direction = Mathf.Sign(difference);
-
-        if (!HasFloorAhead(direction))
-        {
-            Velocity = new Vector2(0f, Velocity.Y);
-            sprite.Play("idle");
-            return;
-        }
-
-        Walk(direction, ChaseSpeed);
-    }
-
-    private void Walk(float direction, float speed)
-    {
-        Velocity = new Vector2(
-            direction * speed,
-            Velocity.Y
-        );
-
-        sprite.FlipH = direction < 0;
-
-        // Point detection in the direction the Walker is facing _OTHERWISE it can only detect right (I SPENT TOO MUCH TIME ON THIS)
-        SetFacingDirection(direction);
-
-
-        sprite.Play("walk");
-    }
-
-    private void SetFacingDirection(float direction)
-    {
-        sprite.FlipH = direction < 0;
-
-        Vector2 rayPosition = detection.TargetPosition;
-        rayPosition.X = Mathf.Abs(rayPosition.X) * direction;
-        detection.TargetPosition = rayPosition;
-    }
-
-    private bool HasFloorAhead(float direction)
-    {
-        floorChecker.TargetPosition = new Vector2(
-            direction * 12f,
-            28f
-        );
-
-        floorChecker.ForceRaycastUpdate();
-
-        return floorChecker.IsColliding();
-    }
-
-    private void CheckPlayerContact()
-    {
-        foreach (Node2D body in contactArea.GetOverlappingBodies())
-        {
-            if (body is Player player &&
-                body.IsInGroup("player"))
-            {
-                player.kill();
-                return;
-            }
-        }
+        currentPatrolTarget = distanceA < distanceB
+            ? patrolPositionA
+            : patrolPositionB;
     }
 }

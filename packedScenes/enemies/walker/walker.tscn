@@ -69,14 +69,13 @@ animations = [{
 size = Vector2(38.666668, 26.666668)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_cwsd6"]
-radius = 24.702679
+radius = 26.666668
 
-[node name="walker" type="CharacterBody2D" unique_id=1343989843]
+[node name="walker" type="CharacterBody2D" unique_id=1343989843 groups=["enemy"]]
 scale = Vector2(1.5, 1.5)
 script = ExtResource("1_uviej")
 PatrolSpeed = 80.0
 ChaseSpeed = 130.0
-TurnPause = 0.25
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=463555124]
 texture_filter = 1
@@ -100,3 +99,5 @@ target_position = Vector2(0, 25.333334)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ContactArea" unique_id=514953480]
 shape = SubResource("CircleShape2D_cwsd6")
+
+[connection signal="body_entered" from="ContactArea" to="." method="collisionHandler"]
