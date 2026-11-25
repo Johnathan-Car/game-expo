@@ -6,13 +6,13 @@
 [ext_resource type="Texture2D" uid="uid://dka58spgy04tj" path="res://GameExpo Files/Assets/Items/Star.png" id="8_6i8fd"]
 [ext_resource type="Texture2D" uid="uid://duuts17wa408" path="res://GameExpo Files/Assets/Items/key_card.png" id="9_i6emn"]
 [ext_resource type="Texture2D" uid="uid://chogcwlaqf06o" path="res://GameExpo Files/Assets/Tilemaps/tile2/Decor/Individual_PNGs/Door.png" id="10_st46j"]
-[ext_resource type="Texture2D" uid="uid://wgg8h20p5o3j" path="res://GameExpo Files/Assets/Tilemaps/tile2/Decor/Individual_PNGs/Water.png" id="11_ejt80"]
-[ext_resource type="Texture2D" uid="uid://dmhwo6m551lt5" path="res://GameExpo Files/Assets/Tilemaps/tile2/Decor/Individual_PNGs/SpawnPoint.png" id="11_vh01d"]
 [ext_resource type="Texture2D" uid="uid://chmjovmbtasyo" path="res://GameExpo Files/Assets/Tilemaps/tile2/Traps/Individual_PNGs/laser_spikes_idle/tile000.png" id="12_3qwtr"]
 [ext_resource type="PackedScene" uid="uid://cxsb7uo0gxofi" path="res://packedScenes/player/player.tscn" id="12_31dcd"]
 [ext_resource type="PackedScene" uid="uid://wnr07idgeirq" path="res://packedScenes/UI/ui.tscn" id="12_ux4pm"]
 [ext_resource type="PackedScene" uid="uid://iph7heyh7a4r" path="res://packedScenes/platforms/platform.tscn" id="13_31dcd"]
+[ext_resource type="PackedScene" uid="uid://b1rg13t1n4pgm" path="res://packedScenes/spawnLocation/spawnMarker.tscn" id="13_506ao"]
 [ext_resource type="PackedScene" uid="uid://nl8xbjxbd61" path="res://packedScenes/platforms/platform_weak.tscn" id="13_ux4pm"]
+[ext_resource type="PackedScene" uid="uid://ceqbkkudp287m" path="res://packedScenes/traps/trap_water.tscn" id="13_wcti0"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_btx15"]
 atlas = ExtResource("6_wcti0")
@@ -185,22 +185,6 @@ position = Vector2(90, -27.375)
 scale = Vector2(0.25, 0.25)
 texture = ExtResource("10_st46j")
 
-[node name="SpawnPoint" type="Sprite2D" parent="." unique_id=1767169174]
-modulate = Color(1, 1, 1, 0.6745098)
-position = Vector2(118.000015, -23.375)
-scale = Vector2(0.3, 0.3)
-texture = ExtResource("11_vh01d")
-
-[node name="Water" type="Sprite2D" parent="." unique_id=69780643]
-position = Vector2(961, 615)
-scale = Vector2(0.82, 0.3)
-texture = ExtResource("11_ejt80")
-
-[node name="Water2" type="Sprite2D" parent="." unique_id=2101991235]
-position = Vector2(2146, 615)
-scale = Vector2(0.82, 0.3)
-texture = ExtResource("11_ejt80")
-
 [node name="SpikeTrap" type="Sprite2D" parent="." unique_id=1588207445]
 position = Vector2(608, 22)
 texture = ExtResource("12_3qwtr")
@@ -267,9 +251,11 @@ position = Vector2(583.00006, -14.000001)
 [node name="Platform36" parent="." unique_id=2127615770 instance=ExtResource("13_31dcd")]
 position = Vector2(583.00006, -94)
 
-[node name="Player" parent="." unique_id=712376501 instance=ExtResource("12_31dcd")]
+[node name="Player" parent="." unique_id=712376501 node_paths=PackedStringArray("UI", "SpawnPoint") instance=ExtResource("12_31dcd")]
 position = Vector2(157, 7)
 SavePointScene = null
+UI = NodePath("UI")
+SpawnPoint = NodePath("../spawnMarker")
 DeathFloatDuration = 4.0
 DeathFloatSpeed = 250.0
 DeathFloatAcceleration = 3.0
@@ -282,6 +268,9 @@ offset_bottom = -209.83699
 
 [node name="Camera2D" type="Camera2D" parent="Player" unique_id=527098492]
 zoom = Vector2(1.6, 1.6)
+
+[node name="spawnMarker" parent="." unique_id=284729761 instance=ExtResource("13_506ao")]
+position = Vector2(117, 7)
 
 [node name="PlatformWeak4" parent="." unique_id=1727002278 instance=ExtResource("13_ux4pm")]
 position = Vector2(616, 611)
@@ -333,3 +322,10 @@ position = Vector2(1036, -51)
 
 [node name="PlatformWeak34" parent="." unique_id=2061652667 instance=ExtResource("13_ux4pm")]
 position = Vector2(811, -51)
+
+[node name="Trap_Water" parent="." unique_id=2142204749 instance=ExtResource("13_wcti0")]
+position = Vector2(960.00006, 611)
+scale = Vector2(0.99, 1)
+
+[node name="Trap_Water2" parent="." unique_id=1782249951 instance=ExtResource("13_wcti0")]
+position = Vector2(2148, 614)

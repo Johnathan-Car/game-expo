@@ -9,8 +9,8 @@
 [ext_resource type="PackedScene" uid="uid://wnr07idgeirq" path="res://packedScenes/UI/ui.tscn" id="10_4exvx"]
 [ext_resource type="Texture2D" uid="uid://chogcwlaqf06o" path="res://GameExpo Files/Assets/Tilemaps/tile2/Decor/Individual_PNGs/Door.png" id="10_8jdg1"]
 [ext_resource type="PackedScene" uid="uid://cxsb7uo0gxofi" path="res://packedScenes/player/player.tscn" id="11_4exvx"]
-[ext_resource type="Texture2D" uid="uid://dmhwo6m551lt5" path="res://GameExpo Files/Assets/Tilemaps/tile2/Decor/Individual_PNGs/SpawnPoint.png" id="11_4shi0"]
 [ext_resource type="PackedScene" uid="uid://iph7heyh7a4r" path="res://packedScenes/platforms/platform.tscn" id="12_4exvx"]
+[ext_resource type="PackedScene" uid="uid://b1rg13t1n4pgm" path="res://packedScenes/spawnLocation/spawnMarker.tscn" id="12_4oyh7"]
 [ext_resource type="PackedScene" uid="uid://b6nlulyp3qwl3" path="res://packedScenes/platforms/platform_moving.tscn" id="13_4oyh7"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_gdjfv"]
@@ -296,15 +296,11 @@ position = Vector2(90, 547)
 scale = Vector2(0.25, 0.25)
 texture = ExtResource("10_8jdg1")
 
-[node name="SpawnPoint" type="Sprite2D" parent="." unique_id=1767169174]
-modulate = Color(1, 1, 1, 0.6745098)
-position = Vector2(118.000015, 551)
-scale = Vector2(0.3, 0.3)
-texture = ExtResource("11_4shi0")
-
-[node name="Player" parent="." unique_id=712376501 instance=ExtResource("11_4exvx")]
+[node name="Player" parent="." unique_id=712376501 node_paths=PackedStringArray("UI", "SpawnPoint") instance=ExtResource("11_4exvx")]
 position = Vector2(157, 583)
 SavePointScene = null
+UI = NodePath("UI")
+SpawnPoint = NodePath("../spawnMarker")
 DeathFloatDuration = 4.0
 DeathFloatSpeed = 250.0
 DeathFloatAcceleration = 3.0
@@ -338,3 +334,6 @@ position = Vector2(1318.0001, 261)
 MoveTime = 3.3
 movingUp = false
 movingRight = true
+
+[node name="spawnMarker" parent="." unique_id=284729761 instance=ExtResource("12_4oyh7")]
+position = Vector2(115, 580)

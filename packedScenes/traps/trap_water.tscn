@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://ceqbkkudp287m"]
+
+[ext_resource type="Texture2D" uid="uid://wgg8h20p5o3j" path="res://GameExpo Files/Assets/Tilemaps/tile2/Decor/Individual_PNGs/Water.png" id="1_f0nhw"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4v6l2"]
+size = Vector2(842, 69)
+
+[node name="Trap_Water" type="StaticBody2D" unique_id=2142204749]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=972542735]
+scale = Vector2(0.82, 0.3)
+texture = ExtResource("1_f0nhw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=81254731]
+position = Vector2(0, 52.5)
+shape = SubResource("RectangleShape2D_4v6l2")

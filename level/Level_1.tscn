@@ -6,9 +6,9 @@
 [ext_resource type="Texture2D" uid="uid://chmjovmbtasyo" path="res://GameExpo Files/Assets/Tilemaps/tile2/Traps/Individual_PNGs/laser_spikes_idle/tile000.png" id="10_3e3x0"]
 [ext_resource type="Texture2D" uid="uid://chogcwlaqf06o" path="res://GameExpo Files/Assets/Tilemaps/tile2/Decor/Individual_PNGs/Door.png" id="10_ecyt4"]
 [ext_resource type="Texture2D" uid="uid://deyx80t2k6v4d" path="res://GameExpo Files/Assets/Tilemaps/tile2/Traps/Individual_PNGs/laser_spikes_deactivate/tile007.png" id="11_0ivd0"]
-[ext_resource type="Texture2D" uid="uid://dmhwo6m551lt5" path="res://GameExpo Files/Assets/Tilemaps/tile2/Decor/Individual_PNGs/SpawnPoint.png" id="11_3e3x0"]
 [ext_resource type="PackedScene" uid="uid://cxsb7uo0gxofi" path="res://packedScenes/player/player.tscn" id="12_0ivd0"]
 [ext_resource type="PackedScene" uid="uid://bv8qk8iwib2md" path="res://packedScenes/items/star.tscn" id="12_liplj"]
+[ext_resource type="PackedScene" uid="uid://b1rg13t1n4pgm" path="res://packedScenes/spawnLocation/spawnMarker.tscn" id="12_qvqi0"]
 [ext_resource type="PackedScene" uid="uid://b6nlulyp3qwl3" path="res://packedScenes/platforms/platform_moving.tscn" id="13_liplj"]
 [ext_resource type="PackedScene" uid="uid://iph7heyh7a4r" path="res://packedScenes/platforms/platform.tscn" id="13_qvqi0"]
 [ext_resource type="PackedScene" uid="uid://cjqrrwsqaa6u6" path="res://packedScenes/items/key_card.tscn" id="13_u3v7k"]
@@ -68,12 +68,6 @@ position = Vector2(281, 544)
 scale = Vector2(0.26, 0.26)
 texture = ExtResource("10_ecyt4")
 
-[node name="SpawnPoint" type="Sprite2D" parent="." unique_id=2103857641]
-modulate = Color(1, 1, 1, 0.6745098)
-position = Vector2(2241, 551)
-scale = Vector2(0.3, 0.3)
-texture = ExtResource("11_3e3x0")
-
 [node name="SpikeTrap" type="Sprite2D" parent="." unique_id=2142211234]
 position = Vector2(736.00006, 597)
 texture = ExtResource("10_3e3x0")
@@ -95,9 +89,10 @@ position = Vector2(135, 576)
 scale = Vector2(2, 2)
 texture = ExtResource("11_0ivd0")
 
-[node name="Player" parent="." unique_id=712376501 node_paths=PackedStringArray("UI") instance=ExtResource("12_0ivd0")]
+[node name="Player" parent="." unique_id=712376501 node_paths=PackedStringArray("UI", "SpawnPoint") instance=ExtResource("12_0ivd0")]
 position = Vector2(2197, 575)
 UI = NodePath("UI")
+SpawnPoint = NodePath("../spawnMarker")
 
 [node name="UI" parent="Player" unique_id=1187077783 instance=ExtResource("8_0ivd0")]
 offset_left = -359.0
@@ -131,3 +126,6 @@ position = Vector2(783, 184)
 
 [node name="KeyCard2" parent="." unique_id=493158505 groups=["KEYCARD"] instance=ExtResource("13_u3v7k")]
 position = Vector2(135, 573)
+
+[node name="spawnMarker" parent="." unique_id=284729761 instance=ExtResource("12_qvqi0")]
+position = Vector2(2241, 581)

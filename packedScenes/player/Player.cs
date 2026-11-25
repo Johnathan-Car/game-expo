@@ -7,6 +7,7 @@ public partial class Player : CharacterBody2D
     [Export] public float Speed = 300.0f;
     [Export] public PackedScene SavePointScene;
     [Export] public Ui UI;
+    [Export] public Marker2D SpawnPoint;
     public const float JumpVelocity = -400.0f;
     public const float Acceleration = 8.0f;
     public const float Deceleration = 12.0f;
@@ -32,7 +33,7 @@ public partial class Player : CharacterBody2D
     {
         _animation = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
         _animation.Play("idle");
-
+        GlobalPosition = SpawnPoint.GlobalPosition;
         respawnPoint = this.GlobalPosition;
     }
 
