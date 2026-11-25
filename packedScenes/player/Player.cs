@@ -6,6 +6,7 @@ public partial class Player : CharacterBody2D
 {
     [Export] public float Speed = 300.0f;
     [Export] public PackedScene SavePointScene;
+    [Export] public Ui UI;
     public const float JumpVelocity = -400.0f;
     public const float Acceleration = 8.0f;
     public const float Deceleration = 12.0f;
@@ -165,11 +166,13 @@ public partial class Player : CharacterBody2D
                 GD.Print("The player touched a Collectable!");
                 if(collider.IsInGroup("KEYCARD"))
                 {
-                    GD.Print("The player touched a Keycard!");           
+                    GD.Print("The player touched a Keycard!");   
+                    UI.ChangeImage("res://GameExpo Files/Assets/Items/key_card.png");               
                 }
                 else if(collider.IsInGroup("STAR"))
                 {
-                    GD.Print("The player touched a Star!");           
+                    GD.Print("The player touched a Star!");
+                    UI.ChangeImage2("res://GameExpo Files/Assets/Items/Star.png");           
                 }
                 // Delete the Collectable
 				collider.QueueFree();
