@@ -1,0 +1,103 @@
+[gd_scene format=3 uid="uid://jauxjs5i578d"]
+
+[ext_resource type="Texture2D" uid="uid://c46ry6bvumddo" path="res://GameExpo Files/Assets/Walker/Enemy1spritesheet.png" id="1_psd60"]
+[ext_resource type="Script" uid="uid://htcoesta6ac1" path="res://packedScenes/enemies/walker/Walker.cs" id="1_uviej"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uviej"]
+atlas = ExtResource("1_psd60")
+region = Rect2(0, 54, 57, 54)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0somn"]
+atlas = ExtResource("1_psd60")
+region = Rect2(57, 54, 57, 54)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fxskn"]
+atlas = ExtResource("1_psd60")
+region = Rect2(114, 54, 57, 54)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6xyel"]
+atlas = ExtResource("1_psd60")
+region = Rect2(0, 108, 57, 54)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pdgyj"]
+atlas = ExtResource("1_psd60")
+region = Rect2(57, 108, 57, 54)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vmprl"]
+atlas = ExtResource("1_psd60")
+region = Rect2(114, 108, 57, 54)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3xr8u"]
+atlas = ExtResource("1_psd60")
+region = Rect2(171, 108, 57, 54)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_r2xwq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uviej")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0somn")
+}, {
+"duration": 2.0,
+"texture": SubResource("AtlasTexture_fxskn")
+}],
+"loop": 1,
+"name": &"idle",
+"speed": 7.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6xyel")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pdgyj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vmprl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3xr8u")
+}],
+"loop": 1,
+"name": &"walk",
+"speed": 8.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sp377"]
+size = Vector2(38.666668, 26.666668)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_cwsd6"]
+radius = 26.666668
+
+[node name="walker" type="CharacterBody2D" unique_id=1343989843 groups=["enemy"]]
+scale = Vector2(1.5, 1.5)
+script = ExtResource("1_uviej")
+PatrolSpeed = 80.0
+ChaseSpeed = 130.0
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=463555124]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_r2xwq")
+animation = &"idle"
+frame_progress = 0.2993342
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2063805026]
+position = Vector2(1.3333334, 8)
+shape = SubResource("RectangleShape2D_sp377")
+
+[node name="Detection" type="RayCast2D" parent="." unique_id=1738709828]
+position = Vector2(0, 7.3333335)
+target_position = Vector2(179.33334, 0)
+
+[node name="FloorChecker" type="RayCast2D" parent="." unique_id=1765715674]
+position = Vector2(24.666668, 0)
+target_position = Vector2(0, 25.333334)
+
+[node name="ContactArea" type="Area2D" parent="." unique_id=1632290592]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ContactArea" unique_id=514953480]
+shape = SubResource("CircleShape2D_cwsd6")
+
+[connection signal="body_entered" from="ContactArea" to="." method="collisionHandler"]

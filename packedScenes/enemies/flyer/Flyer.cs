@@ -8,6 +8,16 @@ public partial class Flyer : Node2D
     [Export] public float WanderPause = 1.0f;
     [Export] public float ExplosionDelay = 4.0f;
 
+    //used to handle states
+    private enum FlyerState
+    {
+        Wander,
+        Chase,
+        Exploding
+    }
+
+    private FlyerState state = FlyerState.Wander;
+
     private AnimatedSprite2D sprite;
     private Area2D detection;
     private Area2D explodeRadius;
@@ -18,9 +28,6 @@ public partial class Flyer : Node2D
 
     private float wanderTimer;
     private float explosionTimer;
-
-    private bool exploding = false;
-    private bool detonated = false;
 
     private RandomNumberGenerator rng = new();
 
@@ -35,37 +42,51 @@ public partial class Flyer : Node2D
         detection = GetNode<Area2D>("detection");
         explodeRadius = GetNode<Area2D>("explode_radius");
 
+        sprite.AnimationFinished += OnAnimationFinished;
+
         sprite.Play("idle");
         PickWanderTarget();
     }
 
     public override void _PhysicsProcess(double delta)
     {
-        FindPlayer();
+        float dt = (float)delta;
 
-        if (!exploding)
+        switch (state)
         {
-            IdleMovement((float)delta);
-        }
-        else
-        {
-            ExplodeMovement((float)delta);
+            case FlyerState.Wander:
+                FindPlayer();
 
-            // Immediately detonate if the player enters explode_radius
-            /*
-            if (PlayerInExplodeRadius())
-            {
-                SkipToLast4Frames();
+                if (state == FlyerState.Wander)
+                    IdleMovement(dt);
 
-                Detonate();
-                return;
-            }*/
+                break;
 
-            ExplosionCountdown((float)delta);
+            case FlyerState.Chase:
+                FindPlayer();
+
+                if (PlayerInExplodeRadius())
+                {
+                    BeginExplosion();
+                    return;
+                }
+
+                ExplodeMovement(dt);
+
+                explosionTimer -= dt;
+
+                if (explosionTimer <= 0f)
+                {
+                    BeginExplosion();
+                }
+
+                break;
+
+            case FlyerState.Exploding:
+                // Stops all movement while exploding.
+                break;
         }
     }
-
-
 
     private void FindPlayer()
     {
@@ -76,21 +97,21 @@ public partial class Flyer : Node2D
 
             targetPosition = body.GlobalPosition;
 
-            // Start the explosion sequence
-            if (!exploding)
-                StartExplosion();
+            if (state == FlyerState.Wander)
+            {
+                StartChase();
+            }
 
             return;
         }
-        // targetPosition remains at the last known position.
     }
 
-    private void StartExplosion()
+    private void StartChase()
     {
-        exploding = true;
+        state = FlyerState.Chase;
         explosionTimer = ExplosionDelay;
 
-        sprite.Play("explode");
+        sprite.Play("chase");
     }
 
     private void IdleMovement(float delta)
@@ -129,31 +150,6 @@ public partial class Flyer : Node2D
         );
     }
 
-    private void ExplosionCountdown(float delta)
-    {
-        explosionTimer -= delta;
-
-        if (explosionTimer <= 0f && !detonated)
-        {
-            Detonate();
-        }
-    }
-
-    private void Detonate()
-    {
-        detonated = true;
-
-        foreach (Node2D body in explodeRadius.GetOverlappingBodies())
-        {
-            if (body is not Player player)
-                continue;
-
-            player.kill();
-        }
-
-        QueueFree();
-    }
-
     private bool PlayerInExplodeRadius()
     {
         foreach (Node2D body in explodeRadius.GetOverlappingBodies())
@@ -165,9 +161,38 @@ public partial class Flyer : Node2D
         return false;
     }
 
-    private void SkipToLast4Frames()
+    private void BeginExplosion()
     {
-        int totalFrames = sprite.SpriteFrames.GetFrameCount("explode");
-        sprite.Frame = totalFrames - 4;
+        if (state == FlyerState.Exploding)
+            return;
+
+        // Lock the state so the Flyer cannot move anymore.
+        state = FlyerState.Exploding;
+
+        // Damage/kill the player if they are within the radiu
+        KillPlayersInRadius();
+
+        // Play the explosion animation.
+        sprite.Play("explode");
+    }
+
+    private void KillPlayersInRadius()
+    {
+        foreach (Node2D body in explodeRadius.GetOverlappingBodies())
+        {
+            if (body is Player player)
+            {
+                player.kill();
+            }
+        }
+    }
+
+    private void OnAnimationFinished()
+    {
+        if (state == FlyerState.Exploding &&
+            sprite.Animation == "explode")
+        {
+            QueueFree();
+        }
     }
 }

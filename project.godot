@@ -29,6 +29,7 @@ player=""
 WEAK="The weak platform"
 COLLECTABLE="Key or Star"
 TRAP="Any traps that would kill the player"
+enemy=""
 
 [input]
 
