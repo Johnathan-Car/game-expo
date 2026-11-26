@@ -8,12 +8,14 @@ public partial class Player : CharacterBody2D
     [Export] public PackedScene SavePointScene;
     [Export] public Ui UI;
     [Export] public Marker2D SpawnPoint;
+    [Export] public DeathFadeOut Fade;
     public const float JumpVelocity = -400.0f;
     public const float Acceleration = 8.0f;
     public const float Deceleration = 12.0f;
     public Vector2 respawnPoint;
     private bool _hasSaved = false;
     private bool _playerHit = false;
+    private bool _deathStarted = false;
     private Polygon2D _savePointDot;
 
     // Death float mode
@@ -40,182 +42,198 @@ public partial class Player : CharacterBody2D
 
     public override void _PhysicsProcess(double delta)
     {
-        if (Input.IsActionJustPressed("DEATH"))
+        // If the player is dead
+        if(_playerHit == true)
         {
-            respawn();
-
-            _deathFloatMode = true;
-            _deathFloatTimer = DeathFloatDuration;
+            Velocity = Vector2.Zero;
+            if(!_deathStarted)
+            {
+                _deathStarted = true;
+                Death();
+            }
+            return;
         }
 
-        if (!_hasSaved && Input.IsActionJustPressed("save"))
-        {
-            if (SavePointScene != null)
-            {
-                respawnPoint = GlobalPosition;
-                CreateSavePointDot();
-                _hasSaved = true;
-            }
-            else
-            {
-                GD.PushWarning("Assign your SavePoint scene in the Inspector first!");
-            }
-        }
-
-        Vector2 velocity = Velocity;
-
-        // Hide when  H is held
-        _isHidden = Input.IsActionPressed("hide");
-
-        // Get movement direction
-        Vector2 direction = Input.GetVector(
-            "left", "right",
-            "up", "down"
-        );
-
-        // Death float timer
-        if (_deathFloatMode)
-        {
-            _deathFloatTimer -= (float)delta;
-
-            if (_deathFloatTimer <= 0f)
-            {
-                _deathFloatMode = false;
-            }
-        }
-
-        if (_deathFloatMode)
-        {
-            // Free movement with momentum and drifting
-            if (direction != Vector2.Zero)
-            {
-                Vector2 targetVelocity = direction * DeathFloatSpeed;
-
-                velocity = velocity.Lerp(
-                    targetVelocity,
-                    DeathFloatAcceleration * (float)delta
-                );
-            }
-            else
-            {
-                // Slowly lose momentum when no input is held
-                velocity = velocity.Lerp(
-                    Vector2.Zero,
-                    DeathFloatFriction * (float)delta
-                );
-            }
-        }
         else
         {
-            // Normal gravity
-            if (!IsOnFloor())
+            if (Input.IsActionJustPressed("DEATH"))
             {
-                velocity += GetGravity() * (float)delta;
+                respawn();
+
+                _deathFloatMode = true;
+                _deathFloatTimer = DeathFloatDuration;
             }
 
-            // Jump (disabled while hiding)
-            if (!_isHidden &&
-                Input.IsActionJustPressed("ui_accept") &&
-                IsOnFloor())
+            if (!_hasSaved && Input.IsActionJustPressed("save"))
             {
-                velocity.Y = JumpVelocity;
+                if (SavePointScene != null)
+                {
+                    respawnPoint = GlobalPosition;
+                    CreateSavePointDot();
+                    _hasSaved = true;
+                }
+                else
+                {
+                    GD.PushWarning("Assign your SavePoint scene in the Inspector first!");
+                }
             }
 
-            // Normal horizontal movement
-            if (_isHidden)
+            Vector2 velocity = Velocity;
+
+            // Hide when  H is held
+            _isHidden = Input.IsActionPressed("hide");
+
+            // Get movement direction
+            Vector2 direction = Input.GetVector(
+                "left", "right",
+                "up", "down"
+            );
+
+            // Death float timer
+            if (_deathFloatMode)
             {
-                velocity.X = 0;
+                _deathFloatTimer -= (float)delta;
+
+                if (_deathFloatTimer <= 0f)
+                {
+                    _deathFloatMode = false;
+                }
+            }
+
+            if (_deathFloatMode)
+            {
+                // Free movement with momentum and drifting
+                if (direction != Vector2.Zero)
+                {
+                    Vector2 targetVelocity = direction * DeathFloatSpeed;
+
+                    velocity = velocity.Lerp(
+                        targetVelocity,
+                        DeathFloatAcceleration * (float)delta
+                    );
+                }
+                else
+                {
+                    // Slowly lose momentum when no input is held
+                    velocity = velocity.Lerp(
+                        Vector2.Zero,
+                        DeathFloatFriction * (float)delta
+                    );
+                }
             }
             else
             {
-                float targetSpeed = direction.X * Speed;
-
-                float lerpSpeed = direction.X != 0
-                    ? Acceleration
-                    : Deceleration;
-
-                velocity.X = Mathf.Lerp(
-                    velocity.X,
-                    targetSpeed,
-                    lerpSpeed * (float)delta
-                );
-            }
-        }
-
-        // Apply velocity
-        Velocity = velocity;
-        MoveAndSlide();
-
-          // Checking Collision for collectables / weak platform
-        for (int i = 0; i < GetSlideCollisionCount(); i++)
-        {
-            KinematicCollision2D collision = GetSlideCollision(i);
-
-            Node collider = collision.GetCollider() as Node;
-
-            // Weak Platform
-            if (collider.IsInGroup("WEAK"))
-            {
-                GD.Print("The player touched a Weak Platform!");
-
-                // Delete the Weak Platform
-				DeleteWeakPlatformDelay(collider);
-            }
-
-            // Traps
-            if(collider.IsInGroup("TRAP"))
-            {
-                GD.Print("The player touched a Trap!");
-            }
-
-            // Collectables
-            if (collider.IsInGroup("COLLECTABLE"))
-            {
-                GD.Print("The player touched a Collectable!");
-                if(collider.IsInGroup("KEYCARD"))
+                // Normal gravity
+                if (!IsOnFloor())
                 {
-                    GD.Print("The player touched a Keycard!");   
-                    UI.ChangeImage("res://GameExpo Files/Assets/Items/key_card.png");               
+                    velocity += GetGravity() * (float)delta;
                 }
-                else if(collider.IsInGroup("STAR"))
+
+                // Jump (disabled while hiding)
+                if (!_isHidden &&
+                    Input.IsActionJustPressed("ui_accept") &&
+                    IsOnFloor())
                 {
-                    GD.Print("The player touched a Star!");
-                    UI.ChangeImage2("res://GameExpo Files/Assets/Items/Star.png");           
+                    velocity.Y = JumpVelocity;
                 }
-                // Delete the Collectable
-				collider.QueueFree();
-                
+
+                // Normal horizontal movement
+                if (_isHidden)
+                {
+                    velocity.X = 0;
+                }
+                else
+                {
+                    float targetSpeed = direction.X * Speed;
+
+                    float lerpSpeed = direction.X != 0
+                        ? Acceleration
+                        : Deceleration;
+
+                    velocity.X = Mathf.Lerp(
+                        velocity.X,
+                        targetSpeed,
+                        lerpSpeed * (float)delta
+                    );
+                }
             }
-        }
-          //
 
-        // Flip character
-        if (!_isHidden && direction.X != 0)
-        {
-            _animation.FlipH = direction.X < 0;
-        }
+            // Apply velocity
+            Velocity = velocity;
+            MoveAndSlide();
 
-        // Animation selection
-        if (_playerHit == true)
-        {
-            PlayAnimation("death");
-            _playerHit = false;
-        }
-        else if (_deathFloatMode)
-        {
-            PlayAnimation("idle"); // Replace with "float" if you create that animation
-        }
-        else if (_isHidden)
-        {
-            PlayAnimation("hidden");
-        }
-        else if (Mathf.Abs(Velocity.X) > 10 && IsOnFloor())
-        {
-            PlayAnimation("drive");
-        }
-        else
-        {
-            PlayAnimation("idle");
+            // Checking Collision for collectables / weak platform
+            for (int i = 0; i < GetSlideCollisionCount(); i++)
+            {
+                KinematicCollision2D collision = GetSlideCollision(i);
+
+                Node collider = collision.GetCollider() as Node;
+
+                // Weak Platform
+                if (collider.IsInGroup("WEAK"))
+                {
+                    GD.Print("The player touched a Weak Platform!");
+
+                    // Delete the Weak Platform
+                    DeleteWeakPlatformDelay(collider);
+                }
+
+                // Traps
+                if(collider.IsInGroup("TRAP"))
+                {
+                    GD.Print("The player touched a Trap!");
+                    _playerHit = true;
+                    GD.Print(_playerHit);
+                }
+
+                // Collectables
+                if (collider.IsInGroup("COLLECTABLE"))
+                {
+                    GD.Print("The player touched a Collectable!");
+                    if(collider.IsInGroup("KEYCARD"))
+                    {
+                        GD.Print("The player touched a Keycard!");   
+                        UI.ChangeImage("res://GameExpo Files/Assets/Items/key_card.png");               
+                    }
+                    else if(collider.IsInGroup("STAR"))
+                    {
+                        GD.Print("The player touched a Star!");
+                        UI.ChangeImage2("res://GameExpo Files/Assets/Items/Star.png");           
+                    }
+                    // Delete the Collectable
+                    collider.QueueFree();
+                    
+                }
+            }
+            //
+
+            // Flip character
+            if (!_isHidden && direction.X != 0)
+            {
+                _animation.FlipH = direction.X < 0;
+            }
+
+            // Animation selection
+            if (_playerHit == true)
+            {
+                PlayAnimation("death");
+            }
+            else if (_deathFloatMode)
+            {
+                PlayAnimation("idle"); // Replace with "float" if you create that animation
+            }
+            else if (_isHidden)
+            {
+                PlayAnimation("hidden");
+            }
+            else if (Mathf.Abs(Velocity.X) > 10 && IsOnFloor())
+            {
+                PlayAnimation("drive");
+            }
+            else
+            {
+                PlayAnimation("idle");
+            }
         }
     }
 
@@ -231,14 +249,17 @@ public partial class Player : CharacterBody2D
     }
 
     // Specifically only for Respawning at start location
-    private async void Death(Node collider)
+    private async void Death()
     {
         await ToSignal(GetTree().CreateTimer(1.0), SceneTreeTimer.SignalName.Timeout);
-
-        if (IsInstanceValid(collider))
-        {
-            collider.QueueFree();
-        }
+        if (Fade != null)
+    {
+        Fade.FadeToBlack();
+    }
+    else
+    {
+        GD.PushWarning("Fade has not been assigned!");
+    }
     }
     public void kill()
     {

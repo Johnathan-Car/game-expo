@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://c8dbfittjusu7"]
+
+[ext_resource type="Script" uid="uid://ciapiwhiycinb" path="res://packedScenes/UI/DeathFadeOut.cs" id="1_36348"]
+
+[node name="DeathFadeOut" type="CanvasLayer" unique_id=595020671]
+script = ExtResource("1_36348")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=90571763]
+offset_left = -1103.0
+offset_top = -2486.0
+offset_right = 2540.0
+offset_bottom = 1157.0
+color = Color(0, 0, 0, 0)

@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://fndao87kbkle" path="res://GameExpo Files/Assets/Tilemaps/tile2/Decor/Individual_PNGs/Door2.png" id="13_crv4i"]
 [ext_resource type="Texture2D" uid="uid://bp2pc681pm4ow" path="res://GameExpo Files/Assets/Tilemaps/tile2/Decor/Individual_PNGs/Cage.png" id="13_epfo6"]
 [ext_resource type="Texture2D" uid="uid://c3p7imgk2l5bh" path="res://GameExpo Files/Assets/Tilemaps/tile2/Traps/laser_activate.png" id="14_4l2ut"]
+[ext_resource type="PackedScene" uid="uid://c8dbfittjusu7" path="res://packedScenes/UI/death_fade_out.tscn" id="14_vgean"]
 [ext_resource type="Texture2D" uid="uid://deyx80t2k6v4d" path="res://GameExpo Files/Assets/Tilemaps/tile2/Traps/Individual_PNGs/laser_spikes_deactivate/tile007.png" id="16_crv4i"]
 [ext_resource type="PackedScene" uid="uid://wnr07idgeirq" path="res://packedScenes/UI/ui.tscn" id="17_u8w3q"]
 [ext_resource type="PackedScene" uid="uid://b1rg13t1n4pgm" path="res://packedScenes/spawnLocation/spawnMarker.tscn" id="18_vgean"]
@@ -470,11 +471,12 @@ position = Vector2(1436, -704.00006)
 scale = Vector2(0.235, 0.13)
 texture = ExtResource("8_kf872")
 
-[node name="Player" parent="." unique_id=712376501 node_paths=PackedStringArray("UI", "SpawnPoint") instance=ExtResource("19_u8w3q")]
+[node name="Player" parent="." unique_id=712376501 node_paths=PackedStringArray("UI", "SpawnPoint", "Fade") instance=ExtResource("19_u8w3q")]
 position = Vector2(1264, 583)
 SavePointScene = null
 UI = NodePath("UI")
 SpawnPoint = NodePath("../spawnMarker")
+Fade = NodePath("DeathFadeOut")
 DeathFloatDuration = 4.0
 DeathFloatSpeed = 250.0
 DeathFloatAcceleration = 3.0
@@ -487,6 +489,8 @@ offset_bottom = -211.83699
 
 [node name="Camera2D" type="Camera2D" parent="Player" unique_id=1296041565]
 zoom = Vector2(1.6, 1.6)
+
+[node name="DeathFadeOut" parent="Player" unique_id=595020671 instance=ExtResource("14_vgean")]
 
 [node name="spawnMarker" parent="." unique_id=284729761 instance=ExtResource("18_vgean")]
 position = Vector2(1167, 580)
