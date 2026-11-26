@@ -63,17 +63,22 @@ public partial class Gunner : CharacterBody2D
         if (player != null)
             AddCollisionExceptionWith(player);
 
-        // Ignore other enemies
-        foreach (Node enemy in GetTree().GetNodesInGroup("enemy"))
-        {
-            if (enemy is PhysicsBody2D body && body != this)
-                AddCollisionExceptionWith(body);
-        }
+        
 
         // Main sprite and raycasts
         sprite = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
         floorChecker = GetNode<RayCast2D>("FloorChecker");
         detection = GetNode<RayCast2D>("Detection");
+
+        // Ignore other enemies
+        foreach (Node enemy in GetTree().GetNodesInGroup("enemy"))
+        {
+            if (enemy is PhysicsBody2D body && body != this)
+            {
+                AddCollisionExceptionWith(body);
+                detection.AddException(body);
+            }
+        }
 
         // Patrol points
         patrolPositionA = GetNode<Marker2D>("PatrolPointA").GlobalPosition;

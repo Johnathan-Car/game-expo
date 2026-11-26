@@ -47,16 +47,21 @@ public partial class Turret : CharacterBody2D
         if (player != null)
             AddCollisionExceptionWith(player);
 
-        // Ignore other enemies
-        foreach (Node enemy in GetTree().GetNodesInGroup("enemy"))
-        {
-            if (enemy is PhysicsBody2D body && body != this)
-                AddCollisionExceptionWith(body);
-        }
+        
 
         // Main sprite and detection ray
         sprite = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
         detection = GetNode<RayCast2D>("Detection");
+
+        // Ignore other enemies
+        foreach (Node enemy in GetTree().GetNodesInGroup("enemy"))
+        {
+            if (enemy is PhysicsBody2D body && body != this)
+            {
+                AddCollisionExceptionWith(body);
+                detection.AddException(body);
+            }
+        }
 
         // Contact area
         contactArea = GetNode<Area2D>("ContactArea");
