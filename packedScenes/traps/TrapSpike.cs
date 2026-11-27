@@ -48,8 +48,8 @@ public partial class TrapSpike : StaticBody2D
 			PlayAnimation("transition_off");
 			await ToSignal(_animation, AnimatedSprite2D.SignalName.AnimationFinished);
 
-			PlayAnimation("off");
 			_collision.SetDeferred("disabled", true);
+			PlayAnimation("off");
 			await ToSignal(_animation, AnimatedSprite2D.SignalName.AnimationFinished);
 
 			isTrapActive = true;
@@ -58,9 +58,10 @@ public partial class TrapSpike : StaticBody2D
 		{
 			PlayAnimation("transition_on");
 			await ToSignal(_animation, AnimatedSprite2D.SignalName.AnimationFinished);
+			_collision.SetDeferred("disabled", false);
+
 
 			PlayAnimation("on");
-			_collision.SetDeferred("disabled", false);
 			await ToSignal(_animation, AnimatedSprite2D.SignalName.AnimationFinished);
 
 			isTrapActive = false;
@@ -72,6 +73,5 @@ public partial class TrapSpike : StaticBody2D
 	private async void Switch()
     {
         await ToSignal(GetTree().CreateTimer(1.0), SceneTreeTimer.SignalName.Timeout);
-
     }
 }

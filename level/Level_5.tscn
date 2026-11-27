@@ -4,11 +4,8 @@
 [ext_resource type="Texture2D" uid="uid://bnacbl31kfr1c" path="res://GameExpo Files/Assets/Walker/WalkerPNG.png" id="3_u8w3q"]
 [ext_resource type="Texture2D" uid="uid://buecs3g202pgy" path="res://GameExpo Files/Assets/Flyer/FlyingEnemyspritesheet.png" id="5_crv4i"]
 [ext_resource type="Texture2D" uid="uid://chogcwlaqf06o" path="res://GameExpo Files/Assets/Tilemaps/tile2/Decor/Individual_PNGs/Door.png" id="8_kf872"]
-[ext_resource type="Texture2D" uid="uid://chmjovmbtasyo" path="res://GameExpo Files/Assets/Tilemaps/tile2/Traps/Individual_PNGs/laser_spikes_idle/tile000.png" id="12_e6xlv"]
-[ext_resource type="Texture2D" uid="uid://dkmpa8bb56p7m" path="res://GameExpo Files/Assets/Tilemaps/tile2/Traps/Individual_PNGs/laser_spikes_activate/tile007.png" id="12_tfa4k"]
 [ext_resource type="Texture2D" uid="uid://fndao87kbkle" path="res://GameExpo Files/Assets/Tilemaps/tile2/Decor/Individual_PNGs/Door2.png" id="13_crv4i"]
 [ext_resource type="Texture2D" uid="uid://bp2pc681pm4ow" path="res://GameExpo Files/Assets/Tilemaps/tile2/Decor/Individual_PNGs/Cage.png" id="13_epfo6"]
-[ext_resource type="Texture2D" uid="uid://c3p7imgk2l5bh" path="res://GameExpo Files/Assets/Tilemaps/tile2/Traps/laser_activate.png" id="14_4l2ut"]
 [ext_resource type="PackedScene" uid="uid://c8dbfittjusu7" path="res://packedScenes/UI/death_fade_out.tscn" id="14_vgean"]
 [ext_resource type="Texture2D" uid="uid://deyx80t2k6v4d" path="res://GameExpo Files/Assets/Tilemaps/tile2/Traps/Individual_PNGs/laser_spikes_deactivate/tile007.png" id="16_crv4i"]
 [ext_resource type="PackedScene" uid="uid://wnr07idgeirq" path="res://packedScenes/UI/ui.tscn" id="17_u8w3q"]
@@ -20,6 +17,8 @@
 [ext_resource type="PackedScene" uid="uid://bv8qk8iwib2md" path="res://packedScenes/items/star.tscn" id="21_e6xlv"]
 [ext_resource type="PackedScene" uid="uid://ceqbkkudp287m" path="res://packedScenes/traps/trap_water.tscn" id="21_qicwp"]
 [ext_resource type="PackedScene" uid="uid://b6nlulyp3qwl3" path="res://packedScenes/platforms/platform_moving.tscn" id="21_vgean"]
+[ext_resource type="PackedScene" uid="uid://nxkhmi12go8b" path="res://packedScenes/traps/trap_laser.tscn" id="22_e6xlv"]
+[ext_resource type="PackedScene" uid="uid://ctrixavkhu5bg" path="res://packedScenes/traps/trap_spike.tscn" id="22_jyct5"]
 [ext_resource type="PackedScene" uid="uid://cjqrrwsqaa6u6" path="res://packedScenes/items/key_card.tscn" id="22_qicwp"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_btx15"]
@@ -129,106 +128,6 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_gdjfv"]
-atlas = ExtResource("14_4l2ut")
-region = Rect2(0, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_hxkly"]
-atlas = ExtResource("14_4l2ut")
-region = Rect2(32, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_0gi7w"]
-atlas = ExtResource("14_4l2ut")
-region = Rect2(64, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_7s5e1"]
-atlas = ExtResource("14_4l2ut")
-region = Rect2(96, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_78oe4"]
-atlas = ExtResource("14_4l2ut")
-region = Rect2(128, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_a1nr4"]
-atlas = ExtResource("14_4l2ut")
-region = Rect2(160, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_4aduj"]
-atlas = ExtResource("14_4l2ut")
-region = Rect2(192, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_y1q3t"]
-atlas = ExtResource("14_4l2ut")
-region = Rect2(224, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_lexf5"]
-atlas = ExtResource("14_4l2ut")
-region = Rect2(256, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_d20vv"]
-atlas = ExtResource("14_4l2ut")
-region = Rect2(288, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_wg2ux"]
-atlas = ExtResource("14_4l2ut")
-region = Rect2(320, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_l2s5k"]
-atlas = ExtResource("14_4l2ut")
-region = Rect2(352, 0, 32, 32)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_tfa4k"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_gdjfv")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_hxkly")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_0gi7w")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_7s5e1")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_78oe4")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_a1nr4")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_4aduj")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_y1q3t")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_lexf5")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_d20vv")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_wg2ux")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_l2s5k")
-}],
-"loop": 1,
-"name": &"default",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_gdjfv")
-}],
-"loop": 1,
-"name": &"default_2",
-"speed": 5.0
-}]
-
 [node name="SimpleLevel" type="Node2D" unique_id=376345198]
 
 [node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=1487749490]
@@ -332,35 +231,6 @@ scale = Vector2(1.2, 1.2)
 sprite_frames = SubResource("SpriteFrames_jtd5m")
 animation = &"default_2"
 
-[node name="SpikeTrap" type="Sprite2D" parent="." unique_id=1588207445]
-position = Vector2(1303, 271)
-texture = ExtResource("12_e6xlv")
-
-[node name="SpikeTrap2" type="Sprite2D" parent="." unique_id=1406588531]
-position = Vector2(1329, 271)
-texture = ExtResource("12_e6xlv")
-
-[node name="SpikeTrap3" type="Sprite2D" parent="." unique_id=31253175]
-position = Vector2(1357, 271)
-texture = ExtResource("12_e6xlv")
-
-[node name="SpikeTrap4" type="Sprite2D" parent="." unique_id=71496630]
-position = Vector2(960, 271)
-texture = ExtResource("12_e6xlv")
-
-[node name="SpikeTrap5" type="Sprite2D" parent="." unique_id=860714199]
-position = Vector2(986, 271)
-texture = ExtResource("12_e6xlv")
-
-[node name="SpikeTrap6" type="Sprite2D" parent="." unique_id=479737338]
-position = Vector2(1014, 271)
-texture = ExtResource("12_e6xlv")
-
-[node name="SpikeTrap_TimeBased" type="Sprite2D" parent="." unique_id=1841502666]
-position = Vector2(1152, 257)
-scale = Vector2(2, 2)
-texture = ExtResource("12_tfa4k")
-
 [node name="Door" type="Sprite2D" parent="." unique_id=1481487942]
 position = Vector2(1168, 544)
 texture = ExtResource("13_crv4i")
@@ -374,30 +244,6 @@ top_level = true
 position = Vector2(864, 584)
 scale = Vector2(0.3, 0.3)
 texture = ExtResource("13_epfo6")
-
-[node name="LaserTrap" type="AnimatedSprite2D" parent="." unique_id=1759752104]
-position = Vector2(913, 224)
-scale = Vector2(4, 4)
-sprite_frames = SubResource("SpriteFrames_tfa4k")
-animation = &"default_2"
-
-[node name="LaserTrap2" type="AnimatedSprite2D" parent="." unique_id=108499086]
-position = Vector2(1074, 224)
-scale = Vector2(4, 4)
-sprite_frames = SubResource("SpriteFrames_tfa4k")
-animation = &"default_2"
-
-[node name="LaserTrap3" type="AnimatedSprite2D" parent="." unique_id=729467592]
-position = Vector2(1241, 224)
-scale = Vector2(4, 4)
-sprite_frames = SubResource("SpriteFrames_tfa4k")
-animation = &"default_2"
-
-[node name="LaserTrap4" type="AnimatedSprite2D" parent="." unique_id=321754277]
-position = Vector2(1424, 224)
-scale = Vector2(4, 4)
-sprite_frames = SubResource("SpriteFrames_tfa4k")
-animation = &"default_2"
 
 [node name="PressurePlate" type="Sprite2D" parent="." unique_id=470594229]
 position = Vector2(900, -384)
@@ -640,8 +486,43 @@ position = Vector2(1956, 614)
 [node name="Trap_Water2" parent="." unique_id=1677022123 instance=ExtResource("21_qicwp")]
 position = Vector2(380, 616)
 
-[node name="Star2" parent="." unique_id=1929158988 instance=ExtResource("21_e6xlv")]
+[node name="Star2" parent="." unique_id=1929158988 groups=["STAR"] instance=ExtResource("21_e6xlv")]
 position = Vector2(853, 575)
 
-[node name="KeyCard2" parent="." unique_id=493158505 instance=ExtResource("22_qicwp")]
+[node name="KeyCard2" parent="." unique_id=493158505 groups=["KEYCARD"] instance=ExtResource("22_qicwp")]
 position = Vector2(147, -1637)
+
+[node name="Trap_Laser" parent="." unique_id=96654910 instance=ExtResource("22_e6xlv")]
+position = Vector2(1424, 241)
+
+[node name="Trap_Laser2" parent="." unique_id=758966253 instance=ExtResource("22_e6xlv")]
+position = Vector2(1242, 241)
+TimerOffset = 0.0
+
+[node name="Trap_Laser3" parent="." unique_id=490357143 instance=ExtResource("22_e6xlv")]
+position = Vector2(1074, 241)
+
+[node name="Trap_Laser4" parent="." unique_id=1093169552 instance=ExtResource("22_e6xlv")]
+position = Vector2(913, 241)
+TimerOffset = 0.0
+
+[node name="Trap_Spike" parent="." unique_id=716427772 instance=ExtResource("22_jyct5")]
+position = Vector2(1302, 272)
+
+[node name="Trap_Spike2" parent="." unique_id=457562478 instance=ExtResource("22_jyct5")]
+position = Vector2(1351, 272)
+TimerOffset = 0.0
+
+[node name="Trap_Spike3" parent="." unique_id=1067552039 instance=ExtResource("22_jyct5")]
+position = Vector2(1128, 272)
+
+[node name="Trap_Spike4" parent="." unique_id=366316216 instance=ExtResource("22_jyct5")]
+position = Vector2(1177, 272)
+TimerOffset = 0.0
+
+[node name="Trap_Spike5" parent="." unique_id=2131336058 instance=ExtResource("22_jyct5")]
+position = Vector2(965, 272)
+
+[node name="Trap_Spike6" parent="." unique_id=2077718155 instance=ExtResource("22_jyct5")]
+position = Vector2(1014, 272)
+TimerOffset = 0.0

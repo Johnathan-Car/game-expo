@@ -326,8 +326,8 @@ scale = Vector2(0.99, 1)
 [node name="Trap_Water2" parent="." unique_id=1782249951 instance=ExtResource("13_wcti0")]
 position = Vector2(2148, 614)
 
-[node name="KeyCard2" parent="." unique_id=493158505 instance=ExtResource("14_ux4pm")]
+[node name="KeyCard2" parent="." unique_id=493158505 groups=["KEYCARD"] instance=ExtResource("14_ux4pm")]
 position = Vector2(641, -4)
 
-[node name="Star2" parent="." unique_id=1929158988 instance=ExtResource("14_506ao")]
+[node name="Star2" parent="." unique_id=1929158988 groups=["STAR"] instance=ExtResource("14_506ao")]
 position = Vector2(2269, -37)

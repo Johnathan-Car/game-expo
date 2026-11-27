@@ -2,10 +2,8 @@
 
 [ext_resource type="TileSet" uid="uid://b4j73oa34pfkb" path="res://GameExpo Files/Assets/Tilemaps/tileSet2.tres" id="1_4lcfb"]
 [ext_resource type="Texture2D" uid="uid://bnacbl31kfr1c" path="res://GameExpo Files/Assets/Walker/WalkerPNG.png" id="3_k11mu"]
-[ext_resource type="Texture2D" uid="uid://c3p7imgk2l5bh" path="res://GameExpo Files/Assets/Tilemaps/tile2/Traps/laser_activate.png" id="5_dut5s"]
 [ext_resource type="Texture2D" uid="uid://chogcwlaqf06o" path="res://GameExpo Files/Assets/Tilemaps/tile2/Decor/Individual_PNGs/Door.png" id="10_hriet"]
 [ext_resource type="PackedScene" uid="uid://c8dbfittjusu7" path="res://packedScenes/UI/death_fade_out.tscn" id="10_hrlyt"]
-[ext_resource type="Texture2D" uid="uid://dkmpa8bb56p7m" path="res://GameExpo Files/Assets/Tilemaps/tile2/Traps/Individual_PNGs/laser_spikes_activate/tile007.png" id="11_4lcfb"]
 [ext_resource type="Texture2D" uid="uid://deyx80t2k6v4d" path="res://GameExpo Files/Assets/Tilemaps/tile2/Traps/Individual_PNGs/laser_spikes_deactivate/tile007.png" id="11_sassa"]
 [ext_resource type="PackedScene" uid="uid://wnr07idgeirq" path="res://packedScenes/UI/ui.tscn" id="12_k11mu"]
 [ext_resource type="PackedScene" uid="uid://cxsb7uo0gxofi" path="res://packedScenes/player/player.tscn" id="12_sassa"]
@@ -14,108 +12,10 @@
 [ext_resource type="PackedScene" uid="uid://iph7heyh7a4r" path="res://packedScenes/platforms/platform.tscn" id="13_hrlyt"]
 [ext_resource type="Texture2D" uid="uid://ci11grr1bjc3y" path="res://GameExpo Files/Assets/Items/Target.png" id="13_k11mu"]
 [ext_resource type="PackedScene" uid="uid://bv8qk8iwib2md" path="res://packedScenes/items/star.tscn" id="14_hrlyt"]
+[ext_resource type="PackedScene" uid="uid://nxkhmi12go8b" path="res://packedScenes/traps/trap_laser.tscn" id="15_314ph"]
+[ext_resource type="PackedScene" uid="uid://ctrixavkhu5bg" path="res://packedScenes/traps/trap_spike.tscn" id="15_dut5s"]
 
 [sub_resource type="DrawableTexture2D" id="DrawableTexture2D_4v6l2"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_gdjfv"]
-atlas = ExtResource("5_dut5s")
-region = Rect2(0, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_hxkly"]
-atlas = ExtResource("5_dut5s")
-region = Rect2(32, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_0gi7w"]
-atlas = ExtResource("5_dut5s")
-region = Rect2(64, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_7s5e1"]
-atlas = ExtResource("5_dut5s")
-region = Rect2(96, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_78oe4"]
-atlas = ExtResource("5_dut5s")
-region = Rect2(128, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_a1nr4"]
-atlas = ExtResource("5_dut5s")
-region = Rect2(160, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_4aduj"]
-atlas = ExtResource("5_dut5s")
-region = Rect2(192, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_y1q3t"]
-atlas = ExtResource("5_dut5s")
-region = Rect2(224, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_lexf5"]
-atlas = ExtResource("5_dut5s")
-region = Rect2(256, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_d20vv"]
-atlas = ExtResource("5_dut5s")
-region = Rect2(288, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_wg2ux"]
-atlas = ExtResource("5_dut5s")
-region = Rect2(320, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_l2s5k"]
-atlas = ExtResource("5_dut5s")
-region = Rect2(352, 0, 32, 32)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_sassa"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_gdjfv")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_hxkly")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_0gi7w")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_7s5e1")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_78oe4")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_a1nr4")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_4aduj")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_y1q3t")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_lexf5")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_d20vv")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_wg2ux")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_l2s5k")
-}],
-"loop": 1,
-"name": &"default",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_gdjfv")
-}],
-"loop": 1,
-"name": &"default_2",
-"speed": 5.0
-}]
 
 [node name="SimpleLevel" type="Node2D" unique_id=376345198]
 
@@ -230,42 +130,6 @@ position = Vector2(135, 572)
 scale = Vector2(1.2, 2.18)
 texture = ExtResource("11_sassa")
 
-[node name="SpikeTrap_TimeBased" type="Sprite2D" parent="." unique_id=1875259526]
-position = Vector2(1166, 586)
-scale = Vector2(2, 2)
-texture = ExtResource("11_4lcfb")
-
-[node name="SpikeTrap_TimeBased2" type="Sprite2D" parent="." unique_id=782238894]
-position = Vector2(1279, 586)
-scale = Vector2(2, 2)
-texture = ExtResource("11_4lcfb")
-
-[node name="SpikeTrap_TimeBased3" type="Sprite2D" parent="." unique_id=954901495]
-position = Vector2(1466, 298)
-scale = Vector2(2, 2)
-texture = ExtResource("11_4lcfb")
-
-[node name="SpikeTrap_TimeBased4" type="Sprite2D" parent="." unique_id=581108324]
-position = Vector2(1348, 298)
-scale = Vector2(2, 2)
-texture = ExtResource("11_4lcfb")
-
-[node name="SpikeTrap_TimeBased5" type="Sprite2D" parent="." unique_id=995622182]
-position = Vector2(1229, 298)
-scale = Vector2(2, 2)
-texture = ExtResource("11_4lcfb")
-
-[node name="SpikeTrap_TimeBased6" type="Sprite2D" parent="." unique_id=1147697344]
-position = Vector2(1116, 298)
-scale = Vector2(2, 2)
-texture = ExtResource("11_4lcfb")
-
-[node name="LaserTrap" type="AnimatedSprite2D" parent="." unique_id=1003071545]
-position = Vector2(1227, 543)
-scale = Vector2(4, 4)
-sprite_frames = SubResource("SpriteFrames_sassa")
-animation = &"default_2"
-
 [node name="Target" type="Sprite2D" parent="." unique_id=727632035]
 position = Vector2(136, 570.00006)
 scale = Vector2(1.3, 1.3)
@@ -357,8 +221,49 @@ position = Vector2(1033.0001, -146)
 [node name="spawnMarker" parent="." unique_id=284729761 instance=ExtResource("13_dut5s")]
 position = Vector2(2245, 582)
 
-[node name="Star2" parent="." unique_id=1929158988 instance=ExtResource("14_hrlyt")]
+[node name="Star2" parent="." unique_id=1929158988 groups=["STAR"] instance=ExtResource("14_hrlyt")]
 position = Vector2(197, -6)
 
-[node name="KeyCard2" parent="." unique_id=493158505 instance=ExtResource("13_314ph")]
+[node name="KeyCard2" parent="." unique_id=493158505 groups=["KEYCARD"] instance=ExtResource("13_314ph")]
 position = Vector2(1502, 162)
+
+[node name="Trap_Spike" parent="." unique_id=716427772 instance=ExtResource("15_dut5s")]
+position = Vector2(1164, 590)
+
+[node name="Trap_Spike2" parent="." unique_id=619706889 instance=ExtResource("15_dut5s")]
+position = Vector2(1280, 590)
+
+[node name="Trap_Spike3" parent="." unique_id=1019542637 instance=ExtResource("15_dut5s")]
+position = Vector2(1117, 304)
+
+[node name="Trap_Spike4" parent="." unique_id=1556189037 instance=ExtResource("15_dut5s")]
+position = Vector2(1165, 304)
+TimerOffset = 0.0
+
+[node name="Trap_Spike5" parent="." unique_id=2103137940 instance=ExtResource("15_dut5s")]
+position = Vector2(1213, 304)
+
+[node name="Trap_Spike6" parent="." unique_id=566556863 instance=ExtResource("15_dut5s")]
+position = Vector2(1261, 304)
+TimerOffset = 0.0
+
+[node name="Trap_Spike7" parent="." unique_id=1692582011 instance=ExtResource("15_dut5s")]
+position = Vector2(1309, 304)
+
+[node name="Trap_Spike8" parent="." unique_id=84809783 instance=ExtResource("15_dut5s")]
+position = Vector2(1357, 304)
+TimerOffset = 0.0
+
+[node name="Trap_Spike9" parent="." unique_id=1814802391 instance=ExtResource("15_dut5s")]
+position = Vector2(1405, 304)
+
+[node name="Trap_Spike10" parent="." unique_id=1331169800 instance=ExtResource("15_dut5s")]
+position = Vector2(1453, 304)
+TimerOffset = 0.0
+
+[node name="Trap_Spike11" parent="." unique_id=1055478477 instance=ExtResource("15_dut5s")]
+position = Vector2(1501, 304)
+
+[node name="Trap_Laser" parent="." unique_id=96654910 instance=ExtResource("15_314ph")]
+position = Vector2(1227, 562)
+TimerOffset = 0.0
