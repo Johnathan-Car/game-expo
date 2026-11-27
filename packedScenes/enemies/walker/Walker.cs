@@ -73,7 +73,7 @@ public partial class Walker : CharacterBody2D
         if (body.isHidden() && state == WalkerState.Patrol)
             return;
 
-        body.kill();
+        body.killCheck();
 
         state = WalkerState.Patrol;
         chaseCooldownTimer = ChaseCooldown;

@@ -16,6 +16,7 @@ public partial class Player : CharacterBody2D
     private bool _hasSaved = false;
     private bool _playerHit = false;
     private bool _deathStarted = false;
+    private bool _reloadedSave = false;
     private Polygon2D _savePointDot;
 
     // Death float mode
@@ -251,16 +252,31 @@ public partial class Player : CharacterBody2D
     // Specifically only for Respawning at start location
     private async void Death()
     {
+        PlayAnimation("death");
         await ToSignal(GetTree().CreateTimer(1.0), SceneTreeTimer.SignalName.Timeout);
         if (Fade != null)
+        {
+            Fade.FadeToBlack();
+        }
+        else
+        {
+            GD.PushWarning("Fade has not been assigned!");
+        }
+    }
+
+    public void killCheck()
     {
-        Fade.FadeToBlack();
+        if(_hasSaved == true && _reloadedSave == false)
+        {
+            kill();
+            _reloadedSave = true;
+        }
+        else
+        {
+            _playerHit = true;
+        }
     }
-    else
-    {
-        GD.PushWarning("Fade has not been assigned!");
-    }
-    }
+
     public void kill()
     {
         respawn();
