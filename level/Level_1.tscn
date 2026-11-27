@@ -120,9 +120,15 @@ position = Vector2(2241, 581)
 
 [node name="Trap_Spike" parent="." unique_id=716427772 instance=ExtResource("13_ophcd")]
 position = Vector2(827, 593)
+TimerOffset = 0.0
 
 [node name="Trap_Spike2" parent="." unique_id=1255772365 instance=ExtResource("13_ophcd")]
 position = Vector2(779, 593)
+TimerOffset = 0.0
 
 [node name="Trap_Spike3" parent="." unique_id=1646535893 instance=ExtResource("13_ophcd")]
 position = Vector2(731, 593)
+TimerOffset = 0.0
+
+[node name="Trap_Spike4" parent="." unique_id=1413367572 instance=ExtResource("13_ophcd")]
+position = Vector2(891, 591)

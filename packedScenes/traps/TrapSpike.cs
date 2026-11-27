@@ -3,13 +3,15 @@ using System;
 
 public partial class TrapSpike : StaticBody2D
 {
+	[Export] public float TimerOffset = 1.5f;
+
 	private Timer _timer;
     private AnimatedSprite2D _animation;
 	private bool isTrapActive = false;
 	private bool _isSwitching = false;
 	private CollisionShape2D _collision;
 
-	public override void _Ready()
+	public override async void _Ready()
 	{
 		_animation = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
 		_timer = GetNode<Timer>("Timer");
@@ -18,6 +20,9 @@ public partial class TrapSpike : StaticBody2D
 
 		_timer.WaitTime = 3.0;
 		_timer.Timeout += OnTimerTimeout;
+
+		await ToSignal(GetTree().CreateTimer(TimerOffset), SceneTreeTimer.SignalName.Timeout);
+		_timer.Start();
 	}
 
 	private void PlayAnimation(string animationName)
