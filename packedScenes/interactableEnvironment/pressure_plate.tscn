@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://cbocj0urjdlxv"]
+
+[ext_resource type="Script" uid="uid://bsy28whr58584" path="res://packedScenes/interactableEnvironment/PressurePlate.cs" id="1_8r0vq"]
+[ext_resource type="Texture2D" uid="uid://deyx80t2k6v4d" path="res://GameExpo Files/Assets/Tilemaps/tile2/Traps/Individual_PNGs/laser_spikes_deactivate/tile007.png" id="1_iur0m"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4v6l2"]
+size = Vector2(32, 6)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jtd5m"]
+size = Vector2(31, 8.5)
+
+[node name="PressurePlate" type="StaticBody2D" unique_id=262588588]
+scale = Vector2(2, 2)
+script = ExtResource("1_8r0vq")
+metadata/_edit_horizontal_guides_ = [-8.0]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=654510039]
+position = Vector2(0, 13)
+shape = SubResource("RectangleShape2D_4v6l2")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=217871892]
+texture = ExtResource("1_iur0m")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1301702357]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=452983201]
+position = Vector2(0, 11.25)
+shape = SubResource("RectangleShape2D_jtd5m")
+debug_color = Color(0.8518679, 0.27585474, 0.6340015, 0.41960785)

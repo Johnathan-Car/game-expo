@@ -13,6 +13,8 @@
 [ext_resource type="PackedScene" uid="uid://ctrixavkhu5bg" path="res://packedScenes/traps/trap_spike.tscn" id="13_ophcd"]
 [ext_resource type="PackedScene" uid="uid://iph7heyh7a4r" path="res://packedScenes/platforms/platform.tscn" id="13_qvqi0"]
 [ext_resource type="PackedScene" uid="uid://cjqrrwsqaa6u6" path="res://packedScenes/items/key_card.tscn" id="13_u3v7k"]
+[ext_resource type="PackedScene" uid="uid://cbocj0urjdlxv" path="res://packedScenes/interactableEnvironment/pressure_plate.tscn" id="14_qvqi0"]
+[ext_resource type="PackedScene" uid="uid://geqdehxpopw1" path="res://packedScenes/interactableEnvironment/pressure_door.tscn" id="15_u3v7k"]
 
 [sub_resource type="DrawableTexture2D" id="DrawableTexture2D_4v6l2"]
 
@@ -129,3 +131,10 @@ TimerOffset = 0.0
 [node name="Trap_Spike3" parent="." unique_id=1646535893 instance=ExtResource("13_ophcd")]
 position = Vector2(731, 593)
 TimerOffset = 0.0
+
+[node name="PressurePlate2" parent="." unique_id=262588588 instance=ExtResource("14_qvqi0")]
+position = Vector2(135, 576)
+
+[node name="PressureDoor2" parent="." unique_id=597577897 node_paths=PackedStringArray("_pressurePlate") instance=ExtResource("15_u3v7k")]
+position = Vector2(281, 544)
+_pressurePlate = NodePath("../PressurePlate2")
