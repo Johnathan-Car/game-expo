@@ -3,7 +3,8 @@
 [ext_resource type="Texture2D" uid="uid://buecs3g202pgy" path="res://GameExpo Files/Assets/Flyer/FlyingEnemyspritesheet.png" id="1_i07r7"]
 [ext_resource type="PackedScene" uid="uid://cxsb7uo0gxofi" path="res://packedScenes/player/player.tscn" id="2_rjl64"]
 [ext_resource type="PackedScene" uid="uid://daidwjkvgvsv7" path="res://packedScenes/enemies/flyer/flyer.tscn" id="3_rjl64"]
-[ext_resource type="PackedScene" uid="uid://jauxjs5i578d" path="res://packedScenes/enemies/walker/walker.tscn" id="4_v2kqv"]
+[ext_resource type="PackedScene" uid="uid://b1cr7oomjphee" path="res://packedScenes/enemies/gunner/gunner.tscn" id="4_v2kqv"]
+[ext_resource type="PackedScene" uid="uid://bmrl0yof403cs" path="res://packedScenes/enemies/turret/turret.tscn" id="5_yjfr4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cwsd6"]
 size = Vector2(951, 20)
@@ -31,11 +32,14 @@ position = Vector2(350, -59)
 [node name="flyer2" parent="." unique_id=843287090 instance=ExtResource("3_rjl64")]
 position = Vector2(891, -63)
 
-[node name="walker2" parent="." unique_id=1343989843 instance=ExtResource("4_v2kqv")]
-position = Vector2(564, 316)
+[node name="gunner" parent="." unique_id=1343989843 instance=ExtResource("4_v2kqv")]
+position = Vector2(564, 317)
 
-[node name="PatrolPointA" type="Marker2D" parent="walker2" unique_id=1229254510]
-position = Vector2(-52, -8.0000105)
+[node name="PatrolPointA" type="Marker2D" parent="gunner" unique_id=1229254510]
+position = Vector2(-52, -8.666672)
 
-[node name="PatrolPointB" type="Marker2D" parent="walker2" unique_id=1656451816]
-position = Vector2(442, -6.0000052)
+[node name="PatrolPointB" type="Marker2D" parent="gunner" unique_id=1656451816]
+position = Vector2(442, -6.6666718)
+
+[node name="turret" parent="." unique_id=1080651815 instance=ExtResource("5_yjfr4")]
+position = Vector2(403, 317)

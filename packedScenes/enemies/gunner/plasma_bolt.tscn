@@ -1,0 +1,47 @@
+[gd_scene format=3 uid="uid://c1ass318u8lxs"]
+
+[ext_resource type="Texture2D" uid="uid://b5ylbuoofhpf0" path="res://GameExpo Files/Assets/projectile/plasma projectile.png" id="1_6pkia"]
+[ext_resource type="Script" uid="uid://df4d0ropw7cwb" path="res://packedScenes/enemies/gunner/PlasmaBolt.cs" id="1_861m1"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0somn"]
+radius = 14.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_861m1"]
+atlas = ExtResource("1_6pkia")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cr15i"]
+atlas = ExtResource("1_6pkia")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6j4xx"]
+atlas = ExtResource("1_6pkia")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_uviej"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_861m1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cr15i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6j4xx")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="plasmaBolt" type="Area2D" unique_id=746208672]
+script = ExtResource("1_861m1")
+
+[node name="CharacterBody2D" type="CollisionShape2D" parent="." unique_id=55996761]
+shape = SubResource("CircleShape2D_0somn")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=2108120067]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_uviej")
+frame_progress = 0.88595325

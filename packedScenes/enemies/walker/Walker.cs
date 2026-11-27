@@ -40,15 +40,21 @@ public partial class Walker : CharacterBody2D
         if (player != null)
             AddCollisionExceptionWith(player);
 
-        foreach (Node enemy in GetTree().GetNodesInGroup("enemy"))
-        {
-            if (enemy is PhysicsBody2D body && body != this)
-                AddCollisionExceptionWith(body);
-        }
+        
 
         sprite = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
         floorChecker = GetNode<RayCast2D>("FloorChecker");
         detection = GetNode<RayCast2D>("Detection");
+
+        // Ignore other enemies
+        foreach (Node enemy in GetTree().GetNodesInGroup("enemy"))
+        {
+            if (enemy is PhysicsBody2D body && body != this)
+            {
+                AddCollisionExceptionWith(body);
+                detection.AddException(body);
+            }
+        }
 
         patrolPositionA = GetNode<Marker2D>("PatrolPointA").GlobalPosition;
         patrolPositionB = GetNode<Marker2D>("PatrolPointB").GlobalPosition;
