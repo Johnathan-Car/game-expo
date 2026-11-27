@@ -486,10 +486,10 @@ position = Vector2(1956, 614)
 [node name="Trap_Water2" parent="." unique_id=1677022123 instance=ExtResource("21_qicwp")]
 position = Vector2(380, 616)
 
-[node name="Star2" parent="." unique_id=1929158988 groups=["STAR"] instance=ExtResource("21_e6xlv")]
+[node name="Star" parent="." unique_id=1929158988 groups=["STAR"] instance=ExtResource("21_e6xlv")]
 position = Vector2(853, 575)
 
-[node name="KeyCard2" parent="." unique_id=493158505 groups=["KEYCARD"] instance=ExtResource("22_qicwp")]
+[node name="KeyCard" parent="." unique_id=493158505 groups=["KEYCARD"] instance=ExtResource("22_qicwp")]
 position = Vector2(147, -1637)
 
 [node name="Trap_Laser" parent="." unique_id=96654910 instance=ExtResource("22_e6xlv")]

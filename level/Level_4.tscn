@@ -5,7 +5,6 @@
 [ext_resource type="Texture2D" uid="uid://buecs3g202pgy" path="res://GameExpo Files/Assets/Flyer/FlyingEnemyspritesheet.png" id="6_wcti0"]
 [ext_resource type="PackedScene" uid="uid://c8dbfittjusu7" path="res://packedScenes/UI/death_fade_out.tscn" id="9_ux4pm"]
 [ext_resource type="Texture2D" uid="uid://chogcwlaqf06o" path="res://GameExpo Files/Assets/Tilemaps/tile2/Decor/Individual_PNGs/Door.png" id="10_st46j"]
-[ext_resource type="Texture2D" uid="uid://chmjovmbtasyo" path="res://GameExpo Files/Assets/Tilemaps/tile2/Traps/Individual_PNGs/laser_spikes_idle/tile000.png" id="12_3qwtr"]
 [ext_resource type="PackedScene" uid="uid://cxsb7uo0gxofi" path="res://packedScenes/player/player.tscn" id="12_31dcd"]
 [ext_resource type="PackedScene" uid="uid://wnr07idgeirq" path="res://packedScenes/UI/ui.tscn" id="12_ux4pm"]
 [ext_resource type="PackedScene" uid="uid://iph7heyh7a4r" path="res://packedScenes/platforms/platform.tscn" id="13_31dcd"]
@@ -14,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://ceqbkkudp287m" path="res://packedScenes/traps/trap_water.tscn" id="13_wcti0"]
 [ext_resource type="PackedScene" uid="uid://bv8qk8iwib2md" path="res://packedScenes/items/star.tscn" id="14_506ao"]
 [ext_resource type="PackedScene" uid="uid://cjqrrwsqaa6u6" path="res://packedScenes/items/key_card.tscn" id="14_ux4pm"]
+[ext_resource type="PackedScene" uid="uid://ctrixavkhu5bg" path="res://packedScenes/traps/trap_spike.tscn" id="15_506ao"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_btx15"]
 atlas = ExtResource("6_wcti0")
@@ -178,18 +178,6 @@ position = Vector2(90, -27.375)
 scale = Vector2(0.25, 0.25)
 texture = ExtResource("10_st46j")
 
-[node name="SpikeTrap" type="Sprite2D" parent="." unique_id=1588207445]
-position = Vector2(608, 22)
-texture = ExtResource("12_3qwtr")
-
-[node name="SpikeTrap2" type="Sprite2D" parent="." unique_id=1406588531]
-position = Vector2(634, 22)
-texture = ExtResource("12_3qwtr")
-
-[node name="SpikeTrap3" type="Sprite2D" parent="." unique_id=31253175]
-position = Vector2(662, 22)
-texture = ExtResource("12_3qwtr")
-
 [node name="Platform19" parent="." unique_id=2010816958 instance=ExtResource("13_31dcd")]
 position = Vector2(1836.0001, 585.00006)
 
@@ -326,8 +314,14 @@ scale = Vector2(0.99, 1)
 [node name="Trap_Water2" parent="." unique_id=1782249951 instance=ExtResource("13_wcti0")]
 position = Vector2(2148, 614)
 
-[node name="KeyCard2" parent="." unique_id=493158505 groups=["KEYCARD"] instance=ExtResource("14_ux4pm")]
+[node name="KeyCard" parent="." unique_id=493158505 groups=["KEYCARD"] instance=ExtResource("14_ux4pm")]
 position = Vector2(641, -4)
 
-[node name="Star2" parent="." unique_id=1929158988 groups=["STAR"] instance=ExtResource("14_506ao")]
+[node name="Star" parent="." unique_id=1929158988 groups=["STAR"] instance=ExtResource("14_506ao")]
 position = Vector2(2269, -37)
+
+[node name="Trap_Spike" parent="." unique_id=716427772 instance=ExtResource("15_506ao")]
+position = Vector2(612, 16)
+
+[node name="Trap_Spike2" parent="." unique_id=786587401 instance=ExtResource("15_506ao")]
+position = Vector2(660, 16)

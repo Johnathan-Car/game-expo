@@ -221,10 +221,10 @@ movingRight = true
 [node name="spawnMarker" parent="." unique_id=284729761 instance=ExtResource("12_4oyh7")]
 position = Vector2(115, 580)
 
-[node name="KeyCard2" parent="." unique_id=493158505 groups=["KEYCARD"] instance=ExtResource("11_4oyh7")]
+[node name="KeyCard" parent="." unique_id=493158505 groups=["KEYCARD"] instance=ExtResource("11_4oyh7")]
 position = Vector2(1048, 502)
 
-[node name="Star2" parent="." unique_id=1929158988 groups=["STAR"] instance=ExtResource("12_mbl8p")]
+[node name="Star" parent="." unique_id=1929158988 groups=["STAR"] instance=ExtResource("12_mbl8p")]
 position = Vector2(1939, 376)
 
 [node name="Trap_Laser" parent="." unique_id=96654910 instance=ExtResource("14_mbl8p")]

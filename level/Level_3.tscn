@@ -221,10 +221,10 @@ position = Vector2(1033.0001, -146)
 [node name="spawnMarker" parent="." unique_id=284729761 instance=ExtResource("13_dut5s")]
 position = Vector2(2245, 582)
 
-[node name="Star2" parent="." unique_id=1929158988 groups=["STAR"] instance=ExtResource("14_hrlyt")]
+[node name="Star" parent="." unique_id=1929158988 groups=["STAR"] instance=ExtResource("14_hrlyt")]
 position = Vector2(197, -6)
 
-[node name="KeyCard2" parent="." unique_id=493158505 groups=["KEYCARD"] instance=ExtResource("13_314ph")]
+[node name="KeyCard" parent="." unique_id=493158505 groups=["KEYCARD"] instance=ExtResource("13_314ph")]
 position = Vector2(1502, 162)
 
 [node name="Trap_Spike" parent="." unique_id=716427772 instance=ExtResource("15_dut5s")]
