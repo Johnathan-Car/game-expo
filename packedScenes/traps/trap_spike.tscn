@@ -1,0 +1,160 @@
+[gd_scene format=3 uid="uid://ctrixavkhu5bg"]
+
+[ext_resource type="Texture2D" uid="uid://c8sqfbyra4xlk" path="res://GameExpo Files/Assets/Tilemaps/tile2/Traps/Individual_PNGs/laser_spikes_activate/tile000.png" id="1_3und7"]
+[ext_resource type="Script" uid="uid://n5i4rr0dww4x" path="res://packedScenes/traps/TrapSpike.cs" id="1_vgdcf"]
+[ext_resource type="Texture2D" uid="uid://chmjovmbtasyo" path="res://GameExpo Files/Assets/Tilemaps/tile2/Traps/Individual_PNGs/laser_spikes_idle/tile000.png" id="2_vgg14"]
+[ext_resource type="Texture2D" uid="uid://bgvneatvanxep" path="res://GameExpo Files/Assets/Tilemaps/tile2/Traps/Individual_PNGs/laser_spikes_idle/tile001.png" id="3_h2316"]
+[ext_resource type="Texture2D" uid="uid://bu1t266yph1y6" path="res://GameExpo Files/Assets/Tilemaps/tile2/Traps/Individual_PNGs/laser_spikes_idle/tile002.png" id="4_101en"]
+[ext_resource type="Texture2D" uid="uid://bohc2h0owkhd" path="res://GameExpo Files/Assets/Tilemaps/tile2/Traps/Individual_PNGs/laser_spikes_idle/tile003.png" id="5_dkfsq"]
+[ext_resource type="Texture2D" uid="uid://bm4aeeky5e6ky" path="res://GameExpo Files/Assets/Tilemaps/tile2/Traps/Individual_PNGs/laser_spikes_idle/tile004.png" id="6_wlnge"]
+[ext_resource type="Texture2D" uid="uid://c1l83ritsx82" path="res://GameExpo Files/Assets/Tilemaps/tile2/Traps/Individual_PNGs/laser_spikes_idle/tile005.png" id="7_yxhjl"]
+[ext_resource type="Texture2D" uid="uid://bx43sxio7yqyi" path="res://GameExpo Files/Assets/Tilemaps/tile2/Traps/Individual_PNGs/laser_spikes_idle/tile006.png" id="8_mxxmv"]
+[ext_resource type="Texture2D" uid="uid://bkiw047uwx4r0" path="res://GameExpo Files/Assets/Tilemaps/tile2/Traps/Individual_PNGs/laser_spikes_idle/tile007.png" id="9_rnxko"]
+[ext_resource type="Texture2D" uid="uid://d1615nmld6fwe" path="res://GameExpo Files/Assets/Tilemaps/tile2/Traps/Individual_PNGs/laser_spikes_idle/tile008.png" id="10_vgdcf"]
+[ext_resource type="Texture2D" uid="uid://ivi68nkx8jrf" path="res://GameExpo Files/Assets/Tilemaps/tile2/Traps/Individual_PNGs/laser_spikes_idle/tile009.png" id="11_avflv"]
+[ext_resource type="Texture2D" uid="uid://c4rmsiwmyirpb" path="res://GameExpo Files/Assets/Tilemaps/tile2/Traps/Individual_PNGs/laser_spikes_activate/tile001.png" id="12_mts0v"]
+[ext_resource type="Texture2D" uid="uid://dd7b1khi7ibpm" path="res://GameExpo Files/Assets/Tilemaps/tile2/Traps/Individual_PNGs/laser_spikes_deactivate/tile000.png" id="12_rnxko"]
+[ext_resource type="Texture2D" uid="uid://wvaloohmyrv6" path="res://GameExpo Files/Assets/Tilemaps/tile2/Traps/Individual_PNGs/laser_spikes_activate/tile002.png" id="13_qvumk"]
+[ext_resource type="Texture2D" uid="uid://d4hr13vhhg86n" path="res://GameExpo Files/Assets/Tilemaps/tile2/Traps/Individual_PNGs/laser_spikes_deactivate/tile001.png" id="13_vgdcf"]
+[ext_resource type="Texture2D" uid="uid://botv17t34fpc6" path="res://GameExpo Files/Assets/Tilemaps/tile2/Traps/Individual_PNGs/laser_spikes_deactivate/tile002.png" id="14_avflv"]
+[ext_resource type="Texture2D" uid="uid://btrkow87k83we" path="res://GameExpo Files/Assets/Tilemaps/tile2/Traps/Individual_PNGs/laser_spikes_activate/tile003.png" id="14_tg614"]
+[ext_resource type="Texture2D" uid="uid://cj6361hapkn6x" path="res://GameExpo Files/Assets/Tilemaps/tile2/Traps/Individual_PNGs/laser_spikes_deactivate/tile003.png" id="15_mts0v"]
+[ext_resource type="Texture2D" uid="uid://b2umb0bifafww" path="res://GameExpo Files/Assets/Tilemaps/tile2/Traps/Individual_PNGs/laser_spikes_activate/tile004.png" id="15_sah1s"]
+[ext_resource type="Texture2D" uid="uid://1hi7ujnrp43h" path="res://GameExpo Files/Assets/Tilemaps/tile2/Traps/Individual_PNGs/laser_spikes_activate/tile005.png" id="16_gf1xn"]
+[ext_resource type="Texture2D" uid="uid://d1yyp3cxb0rtv" path="res://GameExpo Files/Assets/Tilemaps/tile2/Traps/Individual_PNGs/laser_spikes_deactivate/tile004.png" id="16_qvumk"]
+[ext_resource type="Texture2D" uid="uid://ce7hk4ksly0wk" path="res://GameExpo Files/Assets/Tilemaps/tile2/Traps/Individual_PNGs/laser_spikes_activate/tile006.png" id="17_cqqsr"]
+[ext_resource type="Texture2D" uid="uid://c10oh4846cole" path="res://GameExpo Files/Assets/Tilemaps/tile2/Traps/Individual_PNGs/laser_spikes_deactivate/tile005.png" id="17_tg614"]
+[ext_resource type="Texture2D" uid="uid://dkmpa8bb56p7m" path="res://GameExpo Files/Assets/Tilemaps/tile2/Traps/Individual_PNGs/laser_spikes_activate/tile007.png" id="18_d7qki"]
+[ext_resource type="Texture2D" uid="uid://pe8bcjioo3te" path="res://GameExpo Files/Assets/Tilemaps/tile2/Traps/Individual_PNGs/laser_spikes_deactivate/tile006.png" id="18_sah1s"]
+[ext_resource type="Texture2D" uid="uid://dhnh5qtn02ri3" path="res://GameExpo Files/Assets/Tilemaps/tile2/Traps/Individual_PNGs/laser_spikes_activate/tile008.png" id="19_a1r5s"]
+[ext_resource type="Texture2D" uid="uid://deyx80t2k6v4d" path="res://GameExpo Files/Assets/Tilemaps/tile2/Traps/Individual_PNGs/laser_spikes_deactivate/tile007.png" id="19_gf1xn"]
+[ext_resource type="Texture2D" uid="uid://3fyohyog5jjc" path="res://GameExpo Files/Assets/Tilemaps/tile2/Traps/Individual_PNGs/laser_spikes_activate/tile009.png" id="20_5us05"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_nvox3"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_3und7")
+}],
+"loop": 0,
+"name": &"off",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_vgg14")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_h2316")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_101en")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_dkfsq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_wlnge")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_yxhjl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_mxxmv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_rnxko")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_vgdcf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_avflv")
+}],
+"loop": 0,
+"name": &"on",
+"speed": 9.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("12_rnxko")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_vgdcf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_avflv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_mts0v")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_qvumk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_tg614")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_sah1s")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_gf1xn")
+}],
+"loop": 0,
+"name": &"transition_off",
+"speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_3und7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_mts0v")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_qvumk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_tg614")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_sah1s")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_gf1xn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_cqqsr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_d7qki")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_a1r5s")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_5us05")
+}],
+"loop": 0,
+"name": &"transition_on",
+"speed": 8.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rnxko"]
+size = Vector2(26.666668, 11.666666)
+
+[node name="Trap_Spike" type="StaticBody2D" unique_id=716427772 groups=["TRAP"]]
+script = ExtResource("1_vgdcf")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=57164614]
+scale = Vector2(1.5, 1.5)
+sprite_frames = SubResource("SpriteFrames_nvox3")
+animation = &"on"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=153230164]
+position = Vector2(0, 6.25)
+scale = Vector2(1.5, 1.5)
+shape = SubResource("RectangleShape2D_rnxko")
+
+[node name="Timer" type="Timer" parent="." unique_id=767655612]
+autostart = true

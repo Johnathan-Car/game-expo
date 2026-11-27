@@ -3,6 +3,7 @@
 [ext_resource type="TileSet" uid="uid://b4j73oa34pfkb" path="res://GameExpo Files/Assets/Tilemaps/tileSet2.tres" id="1_ejt80"]
 [ext_resource type="Texture2D" uid="uid://bnacbl31kfr1c" path="res://GameExpo Files/Assets/Walker/WalkerPNG.png" id="3_31dcd"]
 [ext_resource type="Texture2D" uid="uid://buecs3g202pgy" path="res://GameExpo Files/Assets/Flyer/FlyingEnemyspritesheet.png" id="6_wcti0"]
+[ext_resource type="PackedScene" uid="uid://c8dbfittjusu7" path="res://packedScenes/UI/death_fade_out.tscn" id="9_ux4pm"]
 [ext_resource type="Texture2D" uid="uid://chogcwlaqf06o" path="res://GameExpo Files/Assets/Tilemaps/tile2/Decor/Individual_PNGs/Door.png" id="10_st46j"]
 [ext_resource type="Texture2D" uid="uid://chmjovmbtasyo" path="res://GameExpo Files/Assets/Tilemaps/tile2/Traps/Individual_PNGs/laser_spikes_idle/tile000.png" id="12_3qwtr"]
 [ext_resource type="PackedScene" uid="uid://cxsb7uo0gxofi" path="res://packedScenes/player/player.tscn" id="12_31dcd"]
@@ -243,11 +244,12 @@ position = Vector2(583.00006, -14.000001)
 [node name="Platform36" parent="." unique_id=2127615770 instance=ExtResource("13_31dcd")]
 position = Vector2(583.00006, -94)
 
-[node name="Player" parent="." unique_id=712376501 node_paths=PackedStringArray("UI", "SpawnPoint") instance=ExtResource("12_31dcd")]
+[node name="Player" parent="." unique_id=712376501 node_paths=PackedStringArray("UI", "SpawnPoint", "Fade") instance=ExtResource("12_31dcd")]
 position = Vector2(157, 7)
 SavePointScene = null
 UI = NodePath("UI")
 SpawnPoint = NodePath("../spawnMarker")
+Fade = NodePath("DeathFadeOut")
 DeathFloatDuration = 4.0
 DeathFloatSpeed = 250.0
 DeathFloatAcceleration = 3.0
@@ -260,6 +262,8 @@ offset_bottom = -209.83699
 
 [node name="Camera2D" type="Camera2D" parent="Player" unique_id=527098492]
 zoom = Vector2(1.6, 1.6)
+
+[node name="DeathFadeOut" parent="Player" unique_id=595020671 instance=ExtResource("9_ux4pm")]
 
 [node name="spawnMarker" parent="." unique_id=284729761 instance=ExtResource("13_506ao")]
 position = Vector2(117, 7)
