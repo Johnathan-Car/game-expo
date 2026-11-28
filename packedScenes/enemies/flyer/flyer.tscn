@@ -2,6 +2,8 @@
 
 [ext_resource type="Script" uid="uid://c277uwm3upjg1" path="res://packedScenes/enemies/flyer/Flyer.cs" id="1_4yp3a"]
 [ext_resource type="Texture2D" uid="uid://buecs3g202pgy" path="res://GameExpo Files/Assets/Flyer/FlyingEnemyspritesheet.png" id="1_tkil4"]
+[ext_resource type="Texture2D" uid="uid://oc3p8h7p4oxd" path="res://GameExpo Files/Assets/Flyer/Explosion1ReallyBig.png" id="3_q7jkr"]
+[ext_resource type="Texture2D" uid="uid://bnevrmgtsry82" path="res://GameExpo Files/Assets/Flyer/Explosion1Big.png" id="3_qvv8c"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3o8fa"]
 atlas = ExtResource("1_tkil4")
@@ -100,6 +102,12 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": ExtResource("3_q7jkr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_qvv8c")
+}, {
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_4yp3a")
 }, {
 "duration": 1.0,
@@ -114,6 +122,14 @@ animations = [{
 "loop": 0,
 "name": &"explode",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_q7jkr")
+}],
+"loop": 0,
+"name": &"explodeStart",
+"speed": 6.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -134,32 +150,37 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_xnpwo"]
-radius = 225.62137
+radius = 165.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_rscc8"]
-radius = 77.31753
+radius = 77.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ah80h"]
 radius = 15.033297
 
 [node name="flyer" type="CharacterBody2D" unique_id=34506200]
 script = ExtResource("1_4yp3a")
+WanderRadius = 0.0
+WanderSpeed = 0.0
+ExplosionDelay = 3.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1244112194]
 texture_filter = 3
 sprite_frames = SubResource("SpriteFrames_cwsd6")
-animation = &"explode"
+animation = &"idle"
 autoplay = "idle"
 
 [node name="detection" type="Area2D" parent="." unique_id=1608254246]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="detection" unique_id=2124258948]
 shape = SubResource("CircleShape2D_xnpwo")
+debug_color = Color(0.6529089, 0.5133807, 0.21105433, 0.41960785)
 
 [node name="explode_radius" type="Area2D" parent="." unique_id=1233885771]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="explode_radius" unique_id=1656381594]
 shape = SubResource("CircleShape2D_rscc8")
+debug_color = Color(0.7912617, 0.3084795, 0.75273734, 0.41960785)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2137824176]
 shape = SubResource("CircleShape2D_ah80h")

@@ -100,7 +100,7 @@ public partial class Gunner : CharacterBody2D
         if (body.isHidden() && state == WalkerState.Patrol)
             return;
 
-        body.kill();
+        body.killCheck();
 
         state = WalkerState.Patrol;
         chaseCooldownTimer = ChaseCooldown;

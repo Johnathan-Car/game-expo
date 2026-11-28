@@ -1,6 +1,7 @@
 using Godot;
 
-public partial class Flyer : Node2D
+
+public partial class Flyer : CharacterBody2D
 {
     [Export] public float WanderRadius = 150f;
     [Export] public float WanderSpeed = 65f;
@@ -124,10 +125,16 @@ public partial class Flyer : Node2D
             PickWanderTarget();
         }
 
+        /* Needs to be removed
         GlobalPosition = GlobalPosition.MoveToward(
             wanderTarget,
             WanderSpeed * delta
         );
+        */
+        Vector2 direction = GlobalPosition.DirectionTo(wanderTarget);
+        Velocity = direction * WanderSpeed;
+
+        MoveAndSlide();
     }
 
     private void PickWanderTarget()
@@ -144,10 +151,17 @@ public partial class Flyer : Node2D
 
     private void ExplodeMovement(float delta)
     {
+        /* Needs to be removed
         GlobalPosition = GlobalPosition.MoveToward(
             targetPosition,
             ChaseSpeed * delta
         );
+        */
+
+        Vector2 direction = GlobalPosition.DirectionTo(targetPosition);
+        Velocity = direction * ChaseSpeed;
+
+        MoveAndSlide();
     }
 
     private bool PlayerInExplodeRadius()
@@ -169,11 +183,8 @@ public partial class Flyer : Node2D
         // Lock the state so the Flyer cannot move anymore.
         state = FlyerState.Exploding;
 
-        // Damage/kill the player if they are within the radiu
-        KillPlayersInRadius();
-
-        // Play the explosion animation.
-        sprite.Play("explode");
+        // Play the first frame so the player can see the start of the explosion
+        sprite.Play("explodeStart");
     }
 
     private void KillPlayersInRadius()
@@ -182,16 +193,27 @@ public partial class Flyer : Node2D
         {
             if (body is Player player)
             {
-                player.kill();
+                player.killCheck();
             }
         }
     }
 
     private void OnAnimationFinished()
     {
-        if (state == FlyerState.Exploding &&
-            sprite.Animation == "explode")
+        if (state != FlyerState.Exploding)
+        return;
+
+        if (sprite.Animation == "explodeStart")
         {
+            // Kill the player after the starting animation.
+            KillPlayersInRadius();
+
+            // Play the actual explosion animation.
+            sprite.Play("explode");
+        }
+        else if (sprite.Animation == "explode")
+        {
+            // Remove the Flyer after the explosion finishes.
             QueueFree();
         }
     }

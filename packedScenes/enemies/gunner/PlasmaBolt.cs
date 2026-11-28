@@ -38,7 +38,7 @@ public partial class PlasmaBolt : Area2D
 
         if (body is Player player)
         {
-            player.kill();
+            player.killCheck();
             QueueFree();
             return;
         }
